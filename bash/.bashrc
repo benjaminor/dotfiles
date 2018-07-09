@@ -109,12 +109,12 @@ fi
 
 # source custom functions
 
-if [ -f shell_config/functions.sh ]; then
+if [ -f $shell_config/functions.sh ]; then
 source $shell_config/functions.sh
 fi
 
 # source temporary command completion in folders
-if [ -f shell_config/run.sh ]; then
+if [ -f $shell_config/run.sh ]; then
 source $shell_config/run.sh
 fi
 
@@ -123,8 +123,8 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f shell_config/aliases.sh ]; then
-    . shell_config/aliases.sh
+if [ -f $shell_config/aliases.sh ]; then
+    . $shell_config/aliases.sh
 fi
 
 # source personal aliases (not in repo)
