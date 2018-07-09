@@ -99,14 +99,32 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 [ -z "$PS1" ] && return
 
+# get shell config (aliases, function)
+shell_config="$HOME/.config/shell"
+
+if [[ ! -x "$shell_config" ]]; then
+    mkdir -p "$shell_config"
+fi
+
+
+# source custom functions
+
+if [ -f shell_config/functions.sh ]; then
+source $shell_config/functions.sh
+fi
+
+# source temporary command completion in folders
+if [ -f shell_config/run.sh ]; then
+source $shell_config/run.sh
+fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f shell_config/aliases.sh ]; then
+    . shell_config/aliases.sh
 fi
 
 # source personal aliases (not in repo)
@@ -128,14 +146,9 @@ if ! shopt -oq posix; then
 fi
 
 
-shell_config="$HOME/.config/shell"
 
-if [[ ! -x "$shell_config" ]]; then
-    mkdir -p "$shell_config"
-fi
 
-# source custom functions
-source $shell_config/functions.sh
+
 
 
 
