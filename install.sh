@@ -1,4 +1,4 @@
-#!bin/sh
+#! /bin/bash
 cd "$(dirname "$0")"
 
 # make symlinks to sh files in bash
