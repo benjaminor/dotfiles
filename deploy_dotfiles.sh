@@ -1,7 +1,8 @@
 #! /bin/bash
-cd "$(dirname "$0")"
 
-#!/bin/bash
+cd "$(dirname "$0")"
+export dotfiles=$(pwd)
+
 # saner programming env: these switches turn some bugs into errors
 set -o errexit -o pipefail -o noclobber -o nounset
 
@@ -27,17 +28,21 @@ fi
 # read getopt’s output this way to handle the quoting right:
 eval set -- "$PARSED"
 
-f=n backup=$(pwd)/bak
+f=n backup="$dotfiles"/bak
 # now enjoy the options in order and nicely split until we see --
 while true; do
 	case "$1" in
 		-b|--backup)
 			backup="$2"
-			shift
+			shift 2
 			;;
 		-f|--force)
 			f=y
 			shift
+			;;
+		--)
+			shift
+			break
 			;;
 		# *)
 		#	echo "Programming error"
@@ -55,29 +60,26 @@ fi
 
 # make symlinks to sh files in bash
 # TODO: make loop
-# TODO: put files before in backup folder
-# TODO: ask for backup to be deleted
-if [[ "$f" == "y" ]]; then
-	mkdir $backup
-else
-	backup = /dev/null
+
+if [[ "$f" == "n" ]]; then
+	mkdir -p $backup
 fi
 
 backup_and_symlink(){
 	# argument 1: file to backup
 	# argument 2: file to symlink to
-	/bin/mv $1 $backup_folder
+	if [[ "$f" == "n" ]]; then
+		/bin/mv $1 $backup
+	fi
 	ln -s $2 $1
 }
 
-backup_and_symlink test.txt $(pwd)/link.txt
+backup_and_symlink ~/.bash_profile "$dotfiles"/bash/.bash_profile
+backup_and_symlink ~/.bashrc "$dotfiles"/bash/.bashrc
+backup_and_symlink  ~/.bash_aliases "$dotfiles"/bash/.bash_aliases
 
-# ln -s $(pwd)/bash/.bash_profile ~/.bash_profile
-# ln -s $(pwd)/bash/.bashrc ~/.bashrc
-# ln -s $(pwd)/bash/.bash_aliases ~/.bash_aliases
+# make symlink to .profile
+backup_and_symlink ~/.profile "$dotfiles"/system/.profile
 
-# # make symlink to .profile
-# ln -s $(pwd)/system/.profile ~/.profile
-
-# # make symlink to .config/shell in home directory
-# ln -s $(pwd)/bash/.config/shell ~/.config/shell
+# make symlink to .config/shell in home directory
+backup_and_symlink ~/.config/shell "$dotfiles"/bash/.config/shell
