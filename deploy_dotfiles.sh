@@ -57,10 +57,6 @@ if [[ $# -ne 0 ]]; then
 	exit 4
 fi
 
-
-# make symlinks to sh files in bash
-# TODO: make loop
-
 if [[ "$f" == "n" ]]; then
 	mkdir -p $backup
 fi
@@ -74,6 +70,7 @@ backup_and_symlink(){
 	ln -s $2 $1
 }
 
+# TODO: add new firefox user.js
 backup_and_symlink ~/.bash_profile "$dotfiles"/bash/.bash_profile
 backup_and_symlink ~/.bashrc "$dotfiles"/bash/.bashrc
 backup_and_symlink  ~/.bash_aliases "$dotfiles"/bash/.bash_aliases
