@@ -1,5 +1,5 @@
 #! /bin/bash
-# TODO: use click as python script
+
 # install all dependencies with ppas
 # either all recommended or ask one by one
 # only works with debian based systems
@@ -8,37 +8,6 @@ if ! [[ -f "/etc/debian_version" ]]; then
 	echo "Sorry, only works for debian based systems."
 	exit 1
 fi
-
-ppa_repos=()
-ppa_libs=()
-snap_libs=()
-# TODO: remove installer scripts
-installer_scripts=()
-
-# emacs
-repos+=("ppa:kelleyk/emacs")
-ppa_libs+=("emacs26")
-
-# keepass2
-ppa_libs+=("keepass2")
-echo "You still have to specify file for keepass2."
-
-# fish shell
-repos+=("ppa:fish-shell/release-2")
-ppa_libs+=("fish")
-
-# silversearcher-ag
-ppa_libs+=("silversearcher-ag")
-
-# firefox
-snap_libs+=("firefox")
-
-# sudo snap install --classic go
-snap_libs+=("--classic go")
-
-#texlive
-installer_scripts+=('http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz')
-
 
 # saner programming env: these switches turn some bugs into errors
 set -o errexit -o pipefail -o noclobber -o nounset
@@ -95,20 +64,74 @@ if [[ "$i" == "y" ]]; then
 	install_opt=""
 fi
 
-# TODO: add repos, install packages
+ppa_repos=()
+ppa_libs=()
+snap_libs=()
+pip_libs=()
+# emacs
+ppa_repos+=("ppa:kelleyk/emacs")
+ppa_libs+=("emacs26")
+
+# keepass2
+ppa_libs+=("keepass2")
+echo "You still have to specify file for keepass2."
+
+# fish shell
+ppa_repos+=("ppa:fish-shell/release-2")
+ppa_libs+=("fish")
+
+# silversearcher-ag
+ppa_libs+=("silversearcher-ag")
+
+# firefox
+snap_libs+=("firefox")
+
+# sudo snap install --classic go
+snap_libs+=("--classic go")
+
+
+###########################################
+#### packages from PyPi ###################
+
+pip_libs+=("fuck")
+pip_libs+=("black")
+pip_libs+=("python-language-server[all]")
+pip_libs+=("mypy")
+pip_libs+=("bandit")
+pip_libs+=("codecov")
+pip_libs+=("autopep8")
+pip_libs+=("pycodestyle")
+
+
+for pack in "${ppa_repos[@]}"; do
+    sudo add-apt-repository $pack
+done
 
 # install packages not in debian ppa_repos
 
 #texlive
-rm -r /usr/local/texlive/2018
-rm -r ~/.texlive2018
 temp_files=$dotfiles/tmp
 mkdir -p temp_files
 
+# conda and anaconda
+# TODO: verify hash 3e58f494ab9fbe12db4460dc152377b5
+echo "Installing Anaconda 5.2. If you want to install a different version, please go to https://docs.anaconda.com/anaconda/install/linux."
+curl -L https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -o $temp_files/Anaconda3-5.2.0-Linux-x86_64.sh
+bash $temp_files/Anaconda3-5.2.0-Linux-x86_64.sh
 
 # texlive
-wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P $temp_files -o texlive-installer.tar.gz
-tar -xzf $temp_files/texlive-installer.tar.gz
+rm -r /usr/local/texlive/2018
+rm -r ~/.texlive2018
+mkdir -p $temp_files/texlive
+wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P $temp_files
+tar -xzf $temp_files/install-tl-unx.tar.gz -C $temp_files/texlive --strip-components 1
+# TODO: ask if user wants to install texlive
+bash $temp_files/texlive/install-tl
+
+
+
+
+rm -rf $temp_files
 
 # vale
-wget 'https://github.com/errata-ai/vale/releases/download/v0.11.2/vale_0.11.2_Linux_64-bit.tar.gz'
+# wget 'https://github.com/errata-ai/vale/releases/download/v0.11.2/vale_0.11.2_Linux_64-bit.tar.gz'
