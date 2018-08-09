@@ -103,8 +103,16 @@ pip_libs+=("autopep8")
 pip_libs+=("pycodestyle")
 
 
-for pack in "${ppa_repos[@]}"; do
-    sudo add-apt-repository $pack
+for repo in "${ppa_repos[@]}"; do
+    sudo add-apt-repository "$repo"
+done
+
+for lib in "${ppa_libs[@]}"; do
+    sudo apt-get install "$install_opt" "$lib"
+done
+
+for lib in "${snap_libs[@]}"; do
+    sudo snap install "$lib"
 done
 
 # install packages not in debian ppa_repos

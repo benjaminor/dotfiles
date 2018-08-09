@@ -155,4 +155,7 @@ fi
 # uses 'thefuck' to fix common command mistakes
 # https://github.com/nvbn/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
-. /home/ben/anaconda3/etc/profile.d/conda.sh
+
+if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
+   source ~/anaconda3/etc/profile.d/conda.sh
+fi
