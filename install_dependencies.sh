@@ -96,6 +96,9 @@ ppa_libs+=("silversearcher-ag")
 # firefox
 ppa_libs+=("firefox")
 
+# GNU global
+ppa_libs+=("global")
+
 # go
 ppa_repos+=("ppa:gophers/archive")
 ppa_libs+=("golang-1.10-go")

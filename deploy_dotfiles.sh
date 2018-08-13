@@ -85,3 +85,6 @@ backup_and_symlink ~/.profile "$dotfiles"/system/.profile
 
 # make symlink to .config/shell in home directory
 backup_and_symlink ~/.config/shell "$dotfiles"/bash/.config/shell
+
+# make symlink to .globalrc
+backup_and_symlink ~/.globalrc "$dotfiles"/global/.globalrc
