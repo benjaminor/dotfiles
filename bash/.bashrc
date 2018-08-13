@@ -38,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -155,3 +155,7 @@ fi
 # uses 'thefuck' to fix common command mistakes
 # https://github.com/nvbn/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+
+if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
+   source ~/anaconda3/etc/profile.d/conda.sh
+fi
