@@ -64,7 +64,6 @@ fi
 backup_and_symlink(){
     # argument 1: file to backup
     # argument 2: file to symlink to
-    # TODO: $1 might be a directory
     if [[ "$f" == "n" && (-f "$1" || -d "$1") ]]; then
 	/bin/mv "$1" "$backup"
     fi

@@ -115,6 +115,7 @@ pip_libs+=("bandit")
 pip_libs+=("codecov")
 pip_libs+=("autopep8")
 pip_libs+=("pycodestyle")
+pip_libs+=("powerline-shell")
 
 ##############################################
 ### set up basic settings ####################
