@@ -1,5 +1,7 @@
 #! /bin/bash
 
+export dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 # install all dependencies with ppas
 # either all recommended or ask one by one
 # only works with debian based systems
@@ -77,8 +79,9 @@ fi
 
 ppa_repos=()
 ppa_libs=()
-# snap_libs=()
 pip_libs=()
+
+
 # emacs
 ppa_repos+=("ppa:kelleyk/emacs")
 ppa_libs+=("emacs26")
@@ -93,8 +96,9 @@ ppa_libs+=("fish")
 # silversearcher-ag
 ppa_libs+=("silversearcher-ag")
 
-# firefox
 ppa_libs+=("firefox")
+
+ppa_libs+=("curl")
 
 # go
 ppa_repos+=("ppa:gophers/archive")
@@ -124,7 +128,7 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 sudo apt-get update
 sudo apt-get install -y software-properties-common
-# sudo apt-get install -y snapd
+
 
 for repo in "${ppa_repos[@]}"; do
     sudo add-apt-repository "$install_opt" "$repo"
@@ -134,15 +138,12 @@ for lib in "${ppa_libs[@]}"; do
     sudo apt-get install "$install_opt" "$lib"
 done
 
-# for lib in "${snap_libs[@]}"; do
-#     sudo snap install "$lib"
-# done
 
 # install packages not in debian ppa_repos
 
 #texlive
 temp_files="$dotfiles"/tmp
-mkdir -p temp_files
+mkdir -p "$temp_files"
 
 flag_python_installed=0
 
@@ -151,7 +152,7 @@ install_anaconda(){
     echo "Installing Anaconda 5.2. If you want to install a different version, please go to https://docs.anaconda.com/anaconda/install/linux."
     curl -L https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -o "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh
 
-    if [[ $(sha256sum "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh ) -eq "09f53738b0cd3bb96f5b1bac488e5528df9906be2480fe61df40e0e0d19e3d48  Anaconda3-5.2.0-Linux-x86_64.sh" ]]; then
+    if [[ $(sha256sum "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh ) = "09f53738b0cd3bb96f5b1bac488e5528df9906be2480fe61df40e0e0d19e3d48  Anaconda3-5.2.0-Linux-x86_64.sh" ]]; then
 	bash "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh
 	flag_python_installed=1
     else
@@ -182,7 +183,7 @@ install_texlive(){
     bash "$temp_files"/texlive/install-tl
 }
 
-if [[ "$i" -eq "y" ]]; then
+if [[ "$i" = "y" ]]; then
     echo "Do you wish to install Anaconda 5.2?"
     select yn in "Yes" "No"; do
 	case "$yn" in
