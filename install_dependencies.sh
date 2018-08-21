@@ -99,6 +99,8 @@ ppa_libs+=("silversearcher-ag")
 ppa_libs+=("firefox")
 
 ppa_libs+=("curl")
+# GNU global
+ppa_libs+=("global")
 
 # go
 ppa_repos+=("ppa:gophers/archive")
@@ -116,6 +118,7 @@ pip_libs+=("bandit")
 pip_libs+=("codecov")
 pip_libs+=("autopep8")
 pip_libs+=("pycodestyle")
+pip_libs+=("powerline-shell")
 
 ##############################################
 ### set up basic settings ####################

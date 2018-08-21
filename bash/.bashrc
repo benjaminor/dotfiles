@@ -9,6 +9,7 @@ case $- in
 esac
 
 
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -16,9 +17,9 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+# unlimited history
+HISTSIZE=
+HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -145,11 +146,100 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# enable powerline in bash
+# powerline-shell has to be installed (with pip)
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 
+# cd options
+shopt -s autocd cdspell dirspell
+
+# glob options
+shopt -s dotglob extglob globstar nocaseglob
+
+# job options
+shopt -s checkjobs huponexit
+
+# shell options
+shopt -s checkhash checkwinsize
+
+# history
+shopt -s cmdhist histappend histverify
+
+# set_prompt () {
+#     local last_command=$?
+#     PS1=''
+
+#     # save after every command
+#     history -a
+
+#     # color escape codes
+#     local color_off='\[\e[0m\]'
+#     local color_red='\[\e[0;31m\]'
+#     local color_green='\[\e[0;32m\]'
+#     local color_yellow='\[\e[0;33m\]'
+#     local color_blue='\[\e[0;34m\]'
+#     local color_purple='\[\e[0;35m\]'
+#     local color_cyan='\[\e[0;36m\]'
+
+#     # hostname
+#     PS1+=$color_blue
+#     PS1+="@\h "
+#     PS1+=$color_off
+
+#     # add purple exit code if non-zero
+#     if [[ $last_command != 0 ]]; then
+#	PS1+=$color_purple
+#	PS1+='$? '
+#	PS1+=$color_off
+#     fi
+
+#     # shortened working directory
+#     PS1+='\w '
+
+#     # add Git status with color hints
+#     PS1+="$(__git_ps1 '%s ')"
+
+#     # red for root, off for user
+#     if [[ $EUID == 0 ]]; then
+#	PS1+=$color_red
+#     else
+#	PS1+=$color_off
+#     fi
+
+#     # end of prompt
+#     PS1+='|-'
+#     PS1+=$color_red
+#     PS1+='/ '
+#     PS1+=$color_off
+# }
+# PROMPT_COMMAND='set_prompt'
+
+# enable ls colors
+if ls --color=auto &> /dev/null; then
+    alias ls='ls --color=auto'
+else
+    export CLICOLOR=1
+fi
 
 
-
+# colored man pages
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+	LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+	LESS_TERMCAP_me=$'\E[0m' \
+	LESS_TERMCAP_se=$'\E[0m' \
+	LESS_TERMCAP_so=$'\E[38;5;246m' \
+	LESS_TERMCAP_ue=$'\E[0m' \
+	LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+	man "$@"
+}
 
 
 # uses 'thefuck' to fix common command mistakes
