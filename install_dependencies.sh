@@ -178,12 +178,12 @@ install_pip_libs(){
 
 # texlive
 install_texlive(){
-    rm -r /usr/local/texlive/2018
-    rm -r ~/.texlive2018
+    sudo rm -r /usr/local/texlive/2018
+    sudo rm -r ~/.texlive2018
     mkdir -p "$temp_files"/texlive
-    wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P "$temp_file"s
+    wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P "$temp_files"
     tar -xzf "$temp_files"/install-tl-unx.tar.gz -C "$temp_files"/texlive --strip-components 1
-    bash "$temp_files"/texlive/install-tl
+    cd "$temp_files"/texlive/ && ./install-tl
 }
 
 if [[ "$i" = "y" ]]; then
