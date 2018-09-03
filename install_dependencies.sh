@@ -256,5 +256,15 @@ brew install fzf
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
 
+# install ripgrep
+brew install ripgrep
+
+# install node.js
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# better man
+npm install -g tldr
+
 
 rm -rf "$temp_files"
