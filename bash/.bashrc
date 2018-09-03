@@ -249,3 +249,5 @@ alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
    source ~/anaconda3/etc/profile.d/conda.sh
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

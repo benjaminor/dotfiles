@@ -234,9 +234,27 @@ else
     install_texlive
 fi
 
+# install linuxbrew
+echo "----------------------------------"
+echo "----------------------------------"
+echo "You should install linuxbrew, too!"
+echo "----------------------------------"
+echo "----------------------------------"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+# not using .bash_profile because .profile is enough
+# test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bash_profile
+echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
+
 # install bat (better than cat)
-wget "https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb" -P "$temp_files"
-sudo dpkg -i "$temp_files"/bat-musl_0.6.1_amd64.deb
+brew install bat
+
+# with brew, install fzf
+brew install fzf
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
 
 
 rm -rf "$temp_files"
