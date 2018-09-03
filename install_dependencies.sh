@@ -234,5 +234,9 @@ else
     install_texlive
 fi
 
+# install bat (better than cat)
+wget "https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb" -P "$temp_files"
+sudo dpkg -i "$temp_files"/bat-musl_0.6.1_amd64.deb
+
 
 rm -rf "$temp_files"
