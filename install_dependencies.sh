@@ -236,3 +236,5 @@ fi
 
 
 rm -rf "$temp_files"
+
+echo "You should install ripgrep, too. At this moment, it is not yet available in an Ubuntu repo."
