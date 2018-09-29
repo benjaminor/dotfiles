@@ -1,5 +1,7 @@
 #! /bin/bash
 
+export dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 # install all dependencies with ppas
 # either all recommended or ask one by one
 # only works with debian based systems
@@ -77,8 +79,9 @@ fi
 
 ppa_repos=()
 ppa_libs=()
-# snap_libs=()
 pip_libs=()
+
+
 # emacs
 ppa_repos+=("ppa:kelleyk/emacs")
 ppa_libs+=("emacs26")
@@ -93,9 +96,9 @@ ppa_libs+=("fish")
 # silversearcher-ag
 ppa_libs+=("silversearcher-ag")
 
-# firefox
 ppa_libs+=("firefox")
 
+ppa_libs+=("curl")
 # GNU global
 ppa_libs+=("global")
 
@@ -128,7 +131,7 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 sudo apt-get update
 sudo apt-get install -y software-properties-common
-# sudo apt-get install -y snapd
+
 
 for repo in "${ppa_repos[@]}"; do
     sudo add-apt-repository "$install_opt" "$repo"
@@ -138,15 +141,12 @@ for lib in "${ppa_libs[@]}"; do
     sudo apt-get install "$install_opt" "$lib"
 done
 
-# for lib in "${snap_libs[@]}"; do
-#     sudo snap install "$lib"
-# done
 
 # install packages not in debian ppa_repos
 
 #texlive
 temp_files="$dotfiles"/tmp
-mkdir -p temp_files
+mkdir -p "$temp_files"
 
 flag_python_installed=0
 
@@ -155,7 +155,7 @@ install_anaconda(){
     echo "Installing Anaconda 5.2. If you want to install a different version, please go to https://docs.anaconda.com/anaconda/install/linux."
     curl -L https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -o "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh
 
-    if [[ $(sha256sum "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh ) -eq "09f53738b0cd3bb96f5b1bac488e5528df9906be2480fe61df40e0e0d19e3d48  Anaconda3-5.2.0-Linux-x86_64.sh" ]]; then
+    if [[ $(sha256sum "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh ) = "09f53738b0cd3bb96f5b1bac488e5528df9906be2480fe61df40e0e0d19e3d48  Anaconda3-5.2.0-Linux-x86_64.sh" ]]; then
 	bash "$temp_files"/Anaconda3-5.2.0-Linux-x86_64.sh
 	flag_python_installed=1
     else
@@ -178,15 +178,15 @@ install_pip_libs(){
 
 # texlive
 install_texlive(){
-    rm -r /usr/local/texlive/2018
-    rm -r ~/.texlive2018
+    sudo rm -r /usr/local/texlive/2018
+    sudo rm -r ~/.texlive2018
     mkdir -p "$temp_files"/texlive
-    wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P "$temp_file"s
+    wget 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz' -P "$temp_files"
     tar -xzf "$temp_files"/install-tl-unx.tar.gz -C "$temp_files"/texlive --strip-components 1
-    bash "$temp_files"/texlive/install-tl
+    cd "$temp_files"/texlive/ && ./install-tl
 }
 
-if [[ "$i" -eq "y" ]]; then
+if [[ "$i" = "y" ]]; then
     echo "Do you wish to install Anaconda 5.2?"
     select yn in "Yes" "No"; do
 	case "$yn" in
@@ -233,6 +233,38 @@ else
     fi
     install_texlive
 fi
+
+# install linuxbrew
+echo "----------------------------------"
+echo "----------------------------------"
+echo "You should install linuxbrew, too!"
+echo "----------------------------------"
+echo "----------------------------------"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+# not using .bash_profile because .profile is enough
+# test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bash_profile
+echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
+
+# install bat (better than cat)
+brew install bat
+
+# with brew, install fzf
+brew install fzf
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+
+# install ripgrep
+brew install ripgrep
+
+# install node.js
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# better man
+npm install -g tldr
 
 
 rm -rf "$temp_files"

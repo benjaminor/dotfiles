@@ -30,3 +30,9 @@ PATH="/home/ben/anaconda3/bin:$PATH"
 
 #texlive
 PATH="$PATH:/home/ben/texlive/2018/bin/x86_64-linux"
+
+if [ -f "~/.profile_personal" ] ; then
+    source "~/.profile_personal"
+fi
+
+export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"

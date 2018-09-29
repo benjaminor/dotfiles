@@ -52,3 +52,5 @@ alias tree="tree -A"
 alias treed="tree -d"
 alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
+
+alias help="tldr"

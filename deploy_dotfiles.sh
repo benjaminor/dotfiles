@@ -1,7 +1,6 @@
 #! /bin/bash
 
-cd "$(dirname "$0")"
-export dotfiles=$(pwd)
+export dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # saner programming env: these switches turn some bugs into errors
 set -o errexit -o pipefail -o noclobber -o nounset
