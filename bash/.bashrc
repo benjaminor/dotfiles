@@ -251,3 +251,28 @@ if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# added by Anaconda3 5.3.0 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/ben/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/ben/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ben/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/ben/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

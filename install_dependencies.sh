@@ -89,10 +89,6 @@ pip_libs=()
 # keepass2
 ppa_libs+=("keepass2")
 
-# fish shell
-ppa_repos+=("ppa:fish-shell/release-2")
-ppa_libs+=("fish")
-
 # silversearcher-ag
 ppa_libs+=("silversearcher-ag")
 
@@ -102,9 +98,6 @@ ppa_libs+=("curl")
 # GNU global
 ppa_libs+=("global")
 
-# go
-ppa_repos+=("ppa:gophers/archive")
-ppa_libs+=("golang-1.10-go")
 
 # classic stuff
 ppa_libs+=("build-essential")
@@ -116,6 +109,9 @@ ppa_libs+=("openjdk-8-jdk")
 
 # vlc media player
 ppa_libs+=("vlc")
+
+# autojump for easier changing directories
+ppa_libs+=("autojump")
 
 ###########################################
 #### packages from PyPi ###################

@@ -38,9 +38,9 @@ then
 elif [[ $OSTYPE == linux-gnu ]]
 then
     # power
-    alias shutdown='sudo shutdown -P now'
+    alias shutdown='sudo shutdown -p now'
     alias reboot='sudo shutdown -r now'
-    alias halt='sudo halt -P'
+    alias halt='sudo halt -p'
 fi
 
 alias sudo='sudo ' # enable alias expansion for sudo
@@ -54,3 +54,4 @@ alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
 
 alias help="tldr"
+alias jenkins="sudo docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
