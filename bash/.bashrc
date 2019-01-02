@@ -87,7 +87,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 alias sudo='sudo '
@@ -280,3 +280,19 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 fi
+
+__fzf_history__() {
+	local line
+	countskip="$(history | tail -n 1 | grep -E '^ *[0-9]+' -o | wc -c)"
+	countskip="$(( countskip + 1 ))"
+	line=$(
+		HISTTIMEFORMAT= history |
+			grep '^.\{1,130\}$' --text |
+			sed 's/ *$//g' |
+			{ i=$(cat); head --lines=-50 <<<"$i" ; cat ~/shared_history | while read line; do echo " 0000  $line"; done; tail -n 50 <<< "$i"; } |
+			tac |
+			nauniq --skip-chars="$countskip" |
+			tac |
+			$(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r |
+			\grep '^ *[0-9]') && sed 's/ *\([0-9]*\)\** \(.*\)/\2/' <<< "$line"
+}
