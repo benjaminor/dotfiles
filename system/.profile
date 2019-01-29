@@ -18,8 +18,8 @@
 # fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:$PATH"
 fi
 
 EDITOR='emacsclient -t -a "emacs -nw"'
@@ -31,8 +31,19 @@ PATH="/home/ben/anaconda3/bin:$PATH"
 #texlive
 PATH="$PATH:/home/ben/texlive/2018/bin/x86_64-linux"
 
-if [ -f "~/.profile_personal" ] ; then
-    source "~/.profile_personal"
+if [ -f "~/.profile_personal" ]; then
+	source "~/.profile_personal"
 fi
 
-export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+# add GOPATH to PATH
+GOPATH="$HOME/go"
+# PATH="$PATH:${GOPATH//://bin:}/bin"
+PATH="$PATH:$GOPATH/bin"
+
+PATH="/home/ben/anaconda3/bin:$PATH"
+
+# set custom NVM dir
+export NVM_DIR="$HOME/.nvm"

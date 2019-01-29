@@ -5,10 +5,8 @@
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
-	*) return;;
+	*) return ;;
 esac
-
-
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -39,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-	xterm-color|*-256color) color_prompt=yes;;
+	xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -67,11 +65,11 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-	xterm*|rxvt*)
+	xterm* | rxvt*)
 		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 		;;
-	*)
-		;;
+	*) ;;
+
 esac
 
 # enable color support of ls and also add handy aliases
@@ -86,11 +84,16 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CF'
-alias sudo='sudo '
+# source commonrc file
+if [ -f ~/.commonrc ]; then
+	source ~/.commonrc
+fi
+
+if [ -f $shell_config/run.sh ]; then
+	source $shell_config/run.sh
+fi
+
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -99,45 +102,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # If not running interactively, don't do anything
 
 [ -z "$PS1" ] && return
-
-# get shell config (aliases, function)
-shell_config="$HOME/.config/shell"
-
-if [[ ! -x "$shell_config" ]]; then
-	mkdir -p "$shell_config"
-fi
-
-
-# source custom functions
-
-if [ -f $shell_config/functions.sh ]; then
-	source $shell_config/functions.sh
-fi
-
-# source temporary command completion in folders
-if [ -f $shell_config/run.sh ]; then
-	source $shell_config/run.sh
-fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f $shell_config/aliases.sh ]; then
-	source $shell_config/aliases.sh
-fi
-
-# source personal aliases (not in repo)
-if [ -f ~/.bash_aliases_personal ]; then
-	source ~/.bash_aliases_personal
-fi
-
-# autojump activation
-if [ -f /usr/share/autojump/autojump.sh ]; then
-	source /usr/share/autojump/autojump.sh
-fi
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -159,7 +123,6 @@ function _update_ps1() {
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
-
 
 # cd options
 shopt -s autocd cdspell dirspell
@@ -226,12 +189,11 @@ shopt -s cmdhist histappend histverify
 # PROMPT_COMMAND='set_prompt'
 
 # enable ls colors
-if ls --color=auto &> /dev/null; then
+if ls --color=auto &>/dev/null; then
 	alias ls='ls --color=auto'
 else
 	export CLICOLOR=1
 fi
-
 
 # colored man pages
 man() {
@@ -245,54 +207,13 @@ man() {
 		man "$@"
 }
 
-
 # uses 'thefuck' to fix common command mistakes
 # https://github.com/nvbn/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
-if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
-	source ~/anaconda3/etc/profile.d/conda.sh
-fi
+# if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
+# 	source ~/anaconda3/etc/profile.d/conda.sh
+# fi
 
+# enable keybindings for fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-
-# added by Anaconda3 5.3.0 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/ben/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-	\eval "$__conda_setup"
-else
-	if [ -f "/home/ben/anaconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/ben/anaconda3/etc/profile.d/conda.sh"
-		CONDA_CHANGEPS1=false conda activate base
-	else
-		\export PATH="/home/ben/anaconda3/bin:$PATH"
-	fi
-fi
-unset __conda_setup
-# <<< conda init <<<
-
-# pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-fi
-
-__fzf_history__() {
-	local line
-	countskip="$(history | tail -n 1 | grep -E '^ *[0-9]+' -o | wc -c)"
-	countskip="$(( countskip + 1 ))"
-	line=$(
-		HISTTIMEFORMAT= history |
-			grep '^.\{1,130\}$' --text |
-			sed 's/ *$//g' |
-			{ i=$(cat); head --lines=-50 <<<"$i" ; cat ~/shared_history | while read line; do echo " 0000  $line"; done; tail -n 50 <<< "$i"; } |
-			tac |
-			nauniq --skip-chars="$countskip" |
-			tac |
-			$(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r |
-			\grep '^ *[0-9]') && sed 's/ *\([0-9]*\)\** \(.*\)/\2/' <<< "$line"
-}

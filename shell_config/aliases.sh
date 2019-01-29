@@ -4,6 +4,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rr="rm -rf"
 
+# some more ls aliases
+alias ll='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias emacs='emacs --no-splash'
 alias today='date +"%A, %B %-d, %Y"'
 
@@ -17,7 +22,6 @@ alias savilerow='/home/data/savilerow-1.6.5-linux/savilerow'
 alias vale='/usr/local/bin/vale'
 alias semacs='emacsclient -n -a emacs'
 
-
 # Emacs as editor
 alias e='emacsclient --alternate-editor="" --no-wait'
 # and open a new frame
@@ -26,21 +30,19 @@ alias ec='e --create-frame'
 alias et='emacsclient --alternate-editor="" --tty'
 
 # system dependent
-if [[ $OSTYPE == darwin* ]]
-then
-    # power
-    alias shutdown='sudo shutdown -hP now'
-    alias reboot='sudo reboot now'
-    alias sleep='shutdown -s now'
+if [[ $OSTYPE == darwin* ]]; then
+	# power
+	alias shutdown='sudo shutdown -hP now'
+	alias reboot='sudo reboot now'
+	alias sleep='shutdown -s now'
 
-    # misc
-    alias unlock_files='chflags -R nouchg *'
-elif [[ $OSTYPE == linux-gnu ]]
-then
-    # power
-    alias shutdown='sudo shutdown -p now'
-    alias reboot='sudo shutdown -r now'
-    alias halt='sudo halt -p'
+	# misc
+	alias unlock_files='chflags -R nouchg *'
+elif [[ $OSTYPE == linux-gnu ]]; then
+	# power
+	alias shutdown='sudo shutdown -p now'
+	alias reboot='sudo shutdown -r now'
+	alias halt='sudo halt -p'
 fi
 
 alias sudo='sudo ' # enable alias expansion for sudo
