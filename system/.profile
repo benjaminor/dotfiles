@@ -25,25 +25,20 @@ fi
 EDITOR='emacsclient -t -a "emacs -nw"'
 SUDO_EDITOR="$EDITOR"
 
-# added by Anaconda3 installer
-PATH="/home/ben/anaconda3/bin:$PATH"
-
 #texlive
 PATH="$PATH:/home/ben/texlive/2018/bin/x86_64-linux"
 
-if [ -f "~/.profile_personal" ]; then
-	source "~/.profile_personal"
+if [ -f "$HOME/.profile_personal" ]; then
+	source "$HOME/.profile_personal"
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
 
 # add GOPATH to PATH
 GOPATH="$HOME/go"
 # PATH="$PATH:${GOPATH//://bin:}/bin"
 PATH="$PATH:$GOPATH/bin"
-
-PATH="/home/ben/anaconda3/bin:$PATH"
 
 # set custom NVM dir
 export NVM_DIR="$HOME/.nvm"

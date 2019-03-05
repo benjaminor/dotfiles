@@ -40,3 +40,10 @@ zplug load --verbose
 if [ -f ~/.commonrc ]; then
 	source ~/.commonrc
 fi
+
+if [ -n "${commands[fzf-share]}" ]; then
+	source "$(fzf-share)/key-bindings.zsh"
+fi
+
+# added by travis gem
+[ -f /home/ben/.travis/travis.sh ] && source /home/ben/.travis/travis.sh

@@ -1,4 +1,11 @@
+#!/usr/bin/env bash
+
 # functions for bash use
+
+# Create a new directory and enter it
+function md() {
+	mkdir -p "$@" && cd "$@"
+}
 
 function move-and-symlink {
     while [ $# -gt 1 ]; do

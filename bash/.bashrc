@@ -216,4 +216,9 @@ alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 # fi
 
 # enable keybindings for fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if command -v fzf-share >/dev/null; then
+	source "$(fzf-share)/key-bindings.bash"
+fi
+
+# added by travis gem
+[ -f /home/ben/.travis/travis.sh ] && source /home/ben/.travis/travis.sh
