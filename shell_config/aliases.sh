@@ -12,11 +12,12 @@ alias l='ls -CF'
 alias emacs='emacs --no-splash'
 alias today='date +"%A, %B %-d, %Y"'
 
-alias uu='sudo apt update && sudo apt upgrade -y  && sudo apt autoremove -y && sudo apt autoclean -y && sudo snap refresh && nix-channel --update && nix-env -u && conda update --all -y && conda clean -a -y'
+alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo snap refresh'
+alias upfi='fisher self-update && fisher'
+
+alias uu='upub && nix-channel --update && nix-env -u && conda update --all -y && conda clean -a -y && upfi'
 alias night='redshift -l 48.15:11.58 &'
 
-###alias sember='emacs ~/Documents/Latex/Semesterberichte/SemesterberichtSS2016/semesterbericht.tex &'
-alias et='exit'
 alias psudo='sudo env PATH="$PATH"'
 alias savilerow='/home/data/savilerow-1.6.5-linux/savilerow'
 alias vale='/usr/local/bin/vale'
@@ -67,3 +68,5 @@ alias zd="z -d"
 
 # networking
 alias wget="curl -O"
+
+alias psi="python setup.py install"

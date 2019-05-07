@@ -1,4 +1,4 @@
-# file shared by .bashrc and .zshrc
+# file shared by .bashrc and .zshrc and fish
 
 # used for aliases, functions and other definitions
 
@@ -57,7 +57,7 @@ fi
 #	eval "$(pyenv init -)"
 # fi
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 if [ -e /home/ben/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ben/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
