@@ -61,12 +61,9 @@ alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
 
 alias help="tldr"
-alias jenkins="sudo docker run -u root --rm -d --name my_jenkins -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
+alias jenkins="sudo docker run -u root --rm -d --name my_jenkins -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean:latest"
 
 # alias for z open directory
 alias zd="z -d"
-
-# networking
-alias wget="curl -O"
 
 alias psi="python setup.py install"

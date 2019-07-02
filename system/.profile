@@ -42,3 +42,5 @@ PATH="$PATH:$GOPATH/bin"
 
 # set custom NVM dir
 export NVM_DIR="$HOME/.nvm"
+
+export PATH="$HOME/.cargo/bin:$PATH"
