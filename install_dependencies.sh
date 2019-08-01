@@ -1,5 +1,9 @@
 #! /bin/bash
 
+echo "This is outdated! Exiting now."
+
+exit 0
+
 export dotfiles="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
 
 # install all dependencies with ppas
