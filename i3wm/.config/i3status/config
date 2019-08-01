@@ -11,14 +11,15 @@ order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "disk /home"
+order += "disk /home/ben/shared"
 # order += "run_watch DHCP"
 # order += "run_watch VPNC"
 order += "path_exists VPN"
 order += "wireless wlp5s0"
 order += "ethernet enp3s0"
 order += "battery 0"
-order += "memory"
 order += "tztime local"
+order += "spotify"
 order += "volume master"
 
 load {
@@ -28,12 +29,18 @@ load {
 cpu_usage {
 		format = "%usage"
 }
-disk "/home" {
-		format = "<span background='#a1d569'> %free Free </span>"
-}
 
 disk "/" {
-		format = "<span background='#aec7cd'> %free Free </span>"
+		format = "<span background='#224400'> %free Free </span>"
+}
+
+disk "/home" {
+		format = "<span background='#0000ff'> %free Free </span>"
+}
+
+disk "/home/ben/shared" {
+
+	 format = "<span background='#bb0000'> %free Free </span>"
 }
 
 wireless wlp5s0 {
@@ -76,7 +83,8 @@ tztime local {
 }
 
 # tztime berlin {
-#		format = "%Y-%m-%d %H:%M:%S %Z"
+#		format = "<span foreground='#ffffff'>time:</span> %time"
+#		format_time = "%H:%M %Z"
 #		timezone = "Europe/Berlin"
 # }
 
@@ -105,4 +113,11 @@ volume master {
 		device = "default"
 		mixer = "Master"
 		mixer_idx = 0
+}
+spotify {
+	button_next = 4
+	button_play_pause = 1
+	button_previous = 5
+	format = "{title} by {artist}"
+	format_down = "no Spotify"
 }
