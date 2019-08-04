@@ -67,3 +67,7 @@ alias jenkins="sudo docker run -u root --rm -d --name my_jenkins -p 8080:8080 -p
 alias zd="z -d"
 
 alias psi="python setup.py install"
+
+alias python3="python3.7"
+alias python="python3.7"
+alias pip="pip3"
