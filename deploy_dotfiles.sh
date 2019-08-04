@@ -77,16 +77,17 @@ backup_and_symlink() {
 # TODO: add new firefox user.js
 backup_and_symlink ~/.bash_profile "$dotfiles"/bash/.bash_profile
 backup_and_symlink ~/.bashrc "$dotfiles"/bash/.bashrc
-backup_and_symlink ~/.bash_aliases "$dotfiles"/bash/.bash_aliases
 
 # make symlink to .profile
 backup_and_symlink ~/.profile "$dotfiles"/system/.profile
 
 # make symlink to .config/shell in home directory
-backup_and_symlink ~/.config/shell "$dotfiles"/.shell_config
+backup_and_symlink ~/.config/shell "$dotfiles"/shell_config
 
 # backup fish config
 backup_and_symlink ~/.config/fish "$dotfiles"/fish
 
 # make symlink to .globalrc
 backup_and_symlink ~/.globalrc "$dotfiles"/global/.globalrc
+
+backup_and_symlink ~/.commonrc "$dotfiles"/shell_config/.commonrc

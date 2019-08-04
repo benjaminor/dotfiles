@@ -36,7 +36,7 @@ Using [Anaconda](https://anaconda.com) distribution with the Anaconda package ma
 - flake8, autopep8, pycodestyle, mypy, bandit
 
 ```console
-$ pip install bandit python-language-server[all] black tox powerline-shell pycodestyle flake8 autopep8, mypy
+$ pip install bandit python-language-server[all] black tox powerline-shell pycodestyle flake8 autopep8 mypy
 ```
 
 
