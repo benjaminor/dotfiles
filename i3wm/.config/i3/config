@@ -216,16 +216,15 @@ bindsym $mod+q [class=".*"] kill
 
 exec --no-startup-id redshift -l 48.18:11.59 -t 6000:2000
 
-# assign [class="qpdfview"] $ws1
-assign [class=".*terminal.*"] $ws2
+assign [class="qpdfview"] $ws1
 assign [class="Emacs"] $ws3
 assign [class="Firefox"] $ws4
 assign [class="Thunderbird.*"] $ws5
-# assign [class=".*(?i)Spotify.*"] $ws8
 
 
 exec --no-startup-id qpdfview
-exec --no-startup-id gnome-terminal
+exec --no-startup-id urxvt
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/urxvt'
 exec --no-startup-id emacs
 exec --no-startup-id firefox
 exec --no-startup-id thunderbird

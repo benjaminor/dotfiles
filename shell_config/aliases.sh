@@ -14,8 +14,10 @@ alias today='date +"%A, %B %-d, %Y"'
 
 alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo snap refresh'
 alias upfi='fisher self-update && fisher'
+alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage'
+alias upco='conda update --all -y && conda clean -a -y'
+alias uu='upub && upfi && upnix'
 
-alias uu='upub && nix-channel --update && nix-env -u && conda update --all -y && conda clean -a -y && upfi'
 alias night='redshift -l 48.15:11.58 &'
 
 alias psudo='sudo env PATH="$PATH"'
@@ -71,3 +73,6 @@ alias psi="python setup.py install"
 alias python3="python3.7"
 alias python="python3.7"
 alias pip="pip3"
+
+## arch
+alias pac="sudo pacman"
