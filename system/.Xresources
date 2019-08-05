@@ -1,3 +1,30 @@
 rofi.combi-modi:    window,drun,ssh
-rofi.font:          hack 10
+rofi.font:          Iosevka 12
 rofi.modi:          combi
+rofi.fuzzy:			true
+
+!! URxvt Appearance*.font: xft:Iosevka:style=Regular:size=8
+URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Inconsolata for Powerline:pixelsize=12
+URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata for Powerline:pixelsize=12
+URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata for Powerline:pixelsize=12
+URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata for Powerline:pixelsize=12
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x42
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+URxvt.loginShell: true
+URxvt.saveLines: 10000
+URxvt.foreground: #ffffff
+URxvt.background: #081d31
+URxvt.secondaryScroll: true
+
+! perl extensions
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox

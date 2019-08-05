@@ -9,3 +9,4 @@ if functions -q bass
 end
 
 set -g theme_show_exit_status yes
+set -g theme_color_scheme solarized-light
