@@ -32,3 +32,8 @@ function lnabs() {
 	#http://stackoverflow.com/questions/4187210/convert-relative-symbolic-links-to-absolute-symbolic-links
 	ln -sf "$(readlink -f "$1")" "$*"
 }
+
+# alias for cheat.sh/
+function cht() {
+	curl cheat.sh/"$1"
+}

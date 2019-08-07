@@ -192,6 +192,10 @@ bindsym $mod+u exec amixer -D pulse -q sset Master 5%+ unmute
 bindsym $mod+i exec amixer -D pulse -q sset Master 5%- unmute
 bindsym $mod+o exec amixer -D pulse -q sset Master 1+ toggle
 
+# Sreen brightness controls
+bindsym $mod+Shift+u exec xbacklight -inc 10 # increase screen brightness
+bindsym $mod+Shift+i exec xbacklight -dec 10 # decrease screen brightness
+
 # TODO: figure this out
 # exec --no-startup-id compton
 
@@ -223,7 +227,6 @@ assign [class="Thunderbird.*"] $ws5
 
 
 exec --no-startup-id qpdfview
-exec --no-startup-id urxvt
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/urxvt'
 exec --no-startup-id emacs
 exec --no-startup-id firefox
