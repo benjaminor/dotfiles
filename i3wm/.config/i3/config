@@ -222,7 +222,7 @@ exec --no-startup-id redshift -l 48.18:11.59 -t 6000:2000
 
 assign [class="qpdfview"] $ws1
 assign [class="Emacs"] $ws3
-assign [class="Firefox"] $ws4
+assign [class="(?i)Firefox"] $ws4
 assign [class="Thunderbird.*"] $ws5
 
 
