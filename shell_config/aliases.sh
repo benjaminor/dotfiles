@@ -76,3 +76,6 @@ alias pip="pip3"
 
 ## arch
 alias pac="sudo pacman"
+
+## tmux
+alias tat="tmux attach -t"

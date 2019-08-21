@@ -26,5 +26,8 @@ URxvt.background: #081d31
 URxvt.secondaryScroll: true
 
 ! perl extensions
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,font-size
 URxvt.urlLauncher: firefox
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-slash:  font-size:show
