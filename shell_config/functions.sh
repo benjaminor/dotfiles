@@ -35,5 +35,5 @@ function lnabs() {
 
 # alias for cheat.sh/
 function cht() {
-	curl cheat.sh/"$1"
+	curl -s cheat.sh/"$1"
 }

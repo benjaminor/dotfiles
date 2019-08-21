@@ -26,7 +26,7 @@ EDITOR='emacsclient -t -a "emacs -nw"'
 SUDO_EDITOR="$EDITOR"
 
 #texlive
-PATH="$PATH:/home/ben/texlive/2018/bin/x86_64-linux"
+PATH="$PATH:/home/ben/texlive/2019/bin/x86_64-linux"
 
 if [ -f "$HOME/.profile_personal" ]; then
 	source "$HOME/.profile_personal"
