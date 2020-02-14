@@ -5,16 +5,15 @@ alias mv='mv -i'
 alias rr="rm -rf"
 
 # some more ls aliases
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CF'
+alias ls='exa'
+alias ll='exa -aalmg@hH --git'
 
 alias emacs='emacs --no-splash'
 alias today='date +"%A, %B %-d, %Y"'
 
-alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo snap refresh'
+alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
 alias upfi='fisher self-update && fisher'
-alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage'
+alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage -d && nix optimise-store'
 alias upco='conda update --all -y && conda clean -a -y'
 alias uu='upub && upfi && upnix'
 
@@ -57,7 +56,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias tree="tree -A"
+alias tree="tree -AC"
 alias treed="tree -d"
 alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
@@ -65,17 +64,28 @@ alias tree2="tree -d -L 2"
 alias help="tldr"
 alias jenkins="sudo docker run -u root --rm -d --name my_jenkins -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean:latest"
 
+alias cab='conda activate bx'
+
 # alias for z open directory
 alias zd="z -d"
 
 alias psi="python setup.py install"
-
-alias python3="python3.7"
-alias python="python3.7"
-alias pip="pip3"
 
 ## arch
 alias pac="sudo pacman"
 
 ## tmux
 alias tat="tmux attach -t"
+alias tn="tmux new"
+alias tls="tmux ls"
+
+alias za='zathura'
+alias ports='netstat -tulanp' ## shortcut  for iptables and pass it via sudo#
+alias ipt='sudo /sbin/iptables'
+
+# display all rules #
+alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias firewall=iptlist
