@@ -32,6 +32,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start file viewer
+bindsym $mod+Shift+Return exec --no-startup-id nautilus
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -45,10 +48,11 @@ bindsym $mod+g exec rofi -show window
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+l focus right
+bindsym $mod+h focus left
+# bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -57,22 +61,22 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
+bindsym $mod+Shift+h move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+j move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+Shift+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -131,6 +135,9 @@ workspace $ws6 output $m2
 workspace $ws7 output $m2
 workspace $ws8 output $m2
 workspace $ws9 output $m2
+
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Right move workspace to output right
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -191,6 +198,19 @@ floating_modifier $mod
 bindsym $mod+u exec amixer -D pulse -q sset Master 5%+ unmute
 bindsym $mod+i exec amixer -D pulse -q sset Master 5%- unmute
 bindsym $mod+o exec amixer -D pulse -q sset Master 1+ toggle
+bindsym XF86AudioLowerVolume exec amixer -D pulse -q sset Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -D pulse -q sset Master 5%+ unmute
+bindsym XF86AudioMute exec amixer -D pulse -q sset Master 1+ toggle
+
+
+# playerctl to play,bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+n exec playerctl next
+bindsym $mod+m exec playerctl previous
+bindsym $mod+comma exec playerctl play-pause
+
 
 # Sreen brightness controls
 bindsym $mod+Shift+u exec xbacklight -inc 10 # increase screen brightness
@@ -199,16 +219,20 @@ bindsym $mod+Shift+i exec xbacklight -dec 10 # decrease screen brightness
 # TODO: figure this out
 # exec --no-startup-id compton
 
+# power on bluetooth
+exec --no-startup-id bluetoothctl power on
+
 set $i3lock-custom i3lock -c 191970
 
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (p) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (p) shutdown, (k) kill open windows
 mode "$mode_system" {
     bindsym l exec --no-startup-id $i3lock-custom, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $i3lock-custom && systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym p exec --no-startup-id  systemctl poweroff, mode "default"
+	bindsym k [class=".*"] kill
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -216,8 +240,9 @@ mode "$mode_system" {
 }
 bindsym $mod+p mode "$mode_system"
 
-bindsym $mod+q [class=".*"] kill
 
+# background and light
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/Firefox_wallpaper.png
 exec --no-startup-id redshift -l 48.18:11.59 -t 6000:2000
 
 assign [class="qpdfview"] $ws1
@@ -227,13 +252,22 @@ assign [class="Thunderbird.*"] $ws5
 
 
 exec --no-startup-id qpdfview
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/urxvt'
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/urxvt -e "tmux"'
 exec --no-startup-id emacs
 exec --no-startup-id firefox
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 exec --no-startup-id nextcloud
 
-for_window [title=".*\(Private Browsing\).*"] move to workspace "Private Browsing"
-for_window [class=".*(?i)Spotify.*"] move to workspace $ws8
+for_window [title=".*\(Private Browsing\).*"] move to workspace "private"
+for_window [class=".*(?i)Spotify.*"] move to workspace "spotify"
 for_window [class="nextcloud"] move scratchpad
+for_window [class=".*(?i)signal.*"] move to workspace "signal"
+for_window [class=".*(?i)anki.*"] move to workspace "anki"
+
+
+# temp
+bindsym $mod+Shift+a workspace "anki"
+bindsym $mod+Shift+s workspace "signal"
+bindsym $mod+Shift+m workspace "spotify"
+bindsym $mod+Shift+p workspace "private"
