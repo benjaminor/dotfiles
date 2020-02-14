@@ -32,12 +32,13 @@ if [ -f "$HOME/.profile_personal" ]; then
 	source "$HOME/.profile_personal"
 fi
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
+if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+	source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
 
 # add GOPATH to PATH
 GOPATH="$HOME/go"
-# PATH="$PATH:${GOPATH//://bin:}/bin"
 PATH="$PATH:$GOPATH/bin"
 
 # set custom NVM dir
@@ -50,3 +51,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$HOME/.poetry/bin:$PATH"
 
 export PATH="$PATH:$HOME/.local/bin"
+
+export TERM="rxvt"
