@@ -5,3 +5,4 @@ fish/fish_history
 fish/functions/
 /fish/fish_variables
 /fish/conf.d/
+/direnv/allow
