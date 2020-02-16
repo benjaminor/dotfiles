@@ -1,3 +1,3 @@
-[submodule ".emacs.d"]
-	path = .emacs.d
-	url = git@github.com:benjaminor/emacs
+[submodule "emacs"]
+	path = roles/dotfiles/files/emacs
+	url = git@github.com:benjaminor/emacs.git
