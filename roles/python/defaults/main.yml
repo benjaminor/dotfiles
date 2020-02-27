@@ -1,0 +1,9 @@
+---
+conda_user: "{{ ansible_env.USER | default('root') }}"
+
+pypi_packages:
+  - black
+  - powerline-shell
+  - mypy
+  - flake8
+  - bandit
