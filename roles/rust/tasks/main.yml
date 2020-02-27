@@ -1,0 +1,20 @@
+---
+- name: set variables
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_os_family }}.yml'
+        - default.yml
+      paths:
+        - 'vars'
+
+- name: Install rustup system requirements
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ rustup_packages }}"
+
+- name: Install rustup, cargo and creates
+  import_tasks: install-rust.yml
+  become_user: "{{ rustup_user }}"

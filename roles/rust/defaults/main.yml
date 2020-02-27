@@ -1,0 +1,8 @@
+---
+rustup_user: "{{ ansible_env.USER | default('root') }}"
+
+rustup_cargo_crates:
+  - exa
+  - hexyl
+  - du-dust
+  - cargo-update
