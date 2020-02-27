@@ -1,0 +1,18 @@
+---
+dotfiles_home:
+  - .tmux.conf
+  - .globalrc
+  - .Xresources
+  - .profile
+  - .bash_profile
+  - .bashrc
+
+dotfiles_config:
+  - fish
+  - i3
+  - i3status
+  - emacs
+  - direnv
+  - shell
+  - powerline-shell
+  - compton.conf

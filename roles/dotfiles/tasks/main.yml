@@ -1,0 +1,48 @@
+---
+- name: create backup directory
+  file: path=~/.backups state=directory
+
+- set_fact:
+    xdg_config_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(ansible_user_dir ~ '/.config', true) }}"
+
+- set_fact:
+    home_path: "{{ dotfiles_home | map('regex_replace', '^(.*)$', ansible_user_dir ~ '/\\1') | list}}"
+    config_path: "{{ dotfiles_config | map('regex_replace', '^(.*)$', xdg_config_home ~ '/\\1') | list}}"
+
+- set_fact:
+    dotfiles_path: "{{ home_path + config_path }}"
+    dotfiles: "{{ dotfiles_home + dotfiles_config }}"
+
+- name: check for non-symlink originals
+  stat: path="{{ item }}"
+  register: original_check
+  loop: '{{ dotfiles_path }}'
+  # changed_when: original_check.stat.exists and not original_check.stat.islnk
+
+- name: show original_check
+  debug:
+    var: original_check
+    verbosity: 2
+
+- name: backup old files
+  command:
+    mv {{ item.0 }} ~/.backups/
+    creates=~/.backups/{{ item.0 }}
+    removes={{ item.0 }}
+  loop:
+    '{{ (dotfiles_path) | zip(original_check.results) | list }}'
+  when: item.1.stat.exists and not item.1.stat.islnk
+  loop_control:
+    label: '{{item.0}}'
+
+- name: show original_check
+  debug:
+    var: original_check
+    verbosity: 2
+
+- name: create symlinks
+  file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item.1 }}
+        path={{ item.0 }}
+        state=link
+        force=yes
+  loop: "{{ (dotfiles_path) | zip(dotfiles) | list }}"
