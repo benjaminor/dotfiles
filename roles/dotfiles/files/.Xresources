@@ -4,10 +4,10 @@ rofi.modi:          combi
 rofi.fuzzy:			true
 
 !! URxvt Appearance*.font: xft:Iosevka:style=Regular:size=8
-URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Inconsolata for Powerline:size=12
-URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata for Powerline:size=12
-URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata for Powerline:size=12
-URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata for Powerline:size=12
+URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata Nerd Font:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x42

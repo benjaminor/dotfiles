@@ -1,8 +1,6 @@
 # fish shell
-fishd.*
-fish/fish_history
-fish/fish_history
-fish/functions/
-/fish/fish_variables
-/fish/conf.d/
 /direnv/allow
+/roles/dotfiles/files/fish/completions/
+/roles/dotfiles/files/fish/functions/
+/roles/dotfiles/files/fish/conf.d/
+/roles/dotfiles/files/fish/fish_variables

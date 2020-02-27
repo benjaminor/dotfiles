@@ -29,9 +29,13 @@ if type -q awk
 
 end
 
-
+# bob-the-fish customization
 set -g theme_show_exit_status yes
 set -g theme_color_scheme solarized-light
+set -g theme_nerd_fonts yes
+set -g theme_display_git_ahead_verbose yes
+set -g theme_display_git_dirty_verbose yes
+set -g theme_display_git_stashed_verbose yes
 
 # cheat.sh
 # cht aready defined in functions.sh
