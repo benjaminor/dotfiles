@@ -1,0 +1,16 @@
+---
+- hosts: local
+  roles:
+    - role: packages
+      tags: ["packages", "software"]
+      become: true
+    - role: rust
+      tags: ["rust", "software"]
+    - role: python
+      tags: ["python", "software"]
+    - role: nix
+      tags: ["nix", "software"]
+    - role: fonts
+      tags: ["fonts"]
+    - role: dotfiles
+      tags: ["dotfiles"]
