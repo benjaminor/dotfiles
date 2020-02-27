@@ -85,8 +85,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # source commonrc file
-if [ -f ~/.commonrc ]; then
-	source ~/.commonrc
+if [ -f ~/.config/shell/commonrc ]; then
+	source ~/.config/shell/.commonrc
 fi
 
 if [ -f $shell_config/run.sh ]; then
@@ -168,8 +168,8 @@ if command -v fzf-share >/dev/null; then
 fi
 
 # added by travis gem
-[ -f /home/ben/.travis/travis.sh ] && source /home/ben/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-source /home/ben/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br

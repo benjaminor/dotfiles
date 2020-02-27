@@ -2,14 +2,15 @@ if test -e ~/conda3/etc/fish/conf.d/conda.fish
 	source ~/conda3/etc/fish/conf.d/conda.fish
 end
 
+set shell_config "$HOME/.config/shell"
+
 if functions -q bass
 	bass source ~/.profile
-	bass source ~/.commonrc
+	bass source "$shell_config/.commonrc"
 	bass source /etc/profile
 end
 
 if type -q awk
-	set shell_config "$HOME/.config/shell"
 	set functions_file "$shell_config/functions.sh"
 	set personal_functions_file "$HOME/.functions_personal"
 	if test -e $functions_file
@@ -45,7 +46,7 @@ complete -c cht -xa '(curl -s cheat.sh/:list)'
 # direnv support for fish
 eval (direnv hook fish)
 
-source /home/ben/.config/broot/launcher/fish/br
+source "$HOME/.config/broot/launcher/fish/br" > /dev/null 2> /dev/null; or true
 
 # opam configuration
-source /home/ben/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true

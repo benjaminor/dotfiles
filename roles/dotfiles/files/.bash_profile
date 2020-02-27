@@ -6,4 +6,4 @@
 # source everything else
 [[ -e ~/.bashrc ]] && source ~/.bashrc
 
-source /home/ben/.config/broot/launcher/bash/br
+source "$HOME"/.config/broot/launcher/bash/br
