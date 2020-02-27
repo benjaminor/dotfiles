@@ -1,0 +1,45 @@
+---
+# - name: get package and repo list
+#   include_vars: "{{ lookup('first_found', params) }}"
+#   vars:
+#     params:
+#       files:
+#         - "{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
+#         - "{{ ansible_distribution }}.yml"
+#         - "{{ ansible_os_family }}.yml"
+#         - "default.yml"
+#       paths:
+#         - 'vars'
+
+- name: download llvm archive signature
+  get_url:  url=https://apt.llvm.org/llvm-snapshot.gpg.key dest=/tmp/llvm.gpg.key
+
+- name: add llvm archive signature
+  shell: apt-key add /tmp/llvm.gpg.key
+
+- name: remove llvm archive signature file
+  file: path=/tmp/llvm.gpg.key state=absent
+
+- name: add repos
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop: "{{ repos }}"
+
+- name: show packages to be installed
+  debug:
+    msg: "{{ item }}"
+  loop: "{{ packages }}"
+
+- name: install with apt
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  ignore_errors: True
+
+- name: install clang development tools
+  when: ansible_distribution_version >= "19.04"
+  apt:
+    name: "{{ llvm_tools }}"
+    state: latest
+  ignore_errors: True

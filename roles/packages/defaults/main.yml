@@ -1,0 +1,35 @@
+---
+repos:
+  - 'ppa:fish-shell/release-3'
+  - 'ppa:phoerious/keepassxc'
+  - 'ppa:nextcloud-devs/client'
+  - 'deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
+  - 'deb-src http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
+
+packages:
+  - fish
+  - zathura
+  - rxvt-unicode
+  - openssh-client
+  - iptables
+  - build-essential
+  - arandr
+  - git
+  - autorandr
+  - vlc
+  - keepassxc
+  - firefox
+  - thunderbird
+  - i3
+  - i3status
+  - tmux
+  - emacsen-common
+  - gcc
+  - make
+  - curl
+  - htop
+
+llvm_tools:
+  - clang
+  - clang-tools
+  - clang-tools-extra

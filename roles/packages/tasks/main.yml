@@ -1,0 +1,4 @@
+---
+- name: run system-specific installation instructions
+  include_tasks: "{{ ansible_distribution }}.yml"
+  ignore_errors: True
