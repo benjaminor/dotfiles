@@ -1,0 +1,18 @@
+---
+force_nix_reinstall: false
+
+nix_packages:
+  - fzf
+  - okular
+  - atool
+  - asmfmt
+  - broot
+  - bat
+  - ripgrep
+  - pandoc
+  - fd
+  - direnv
+  - bandwhich
+
+nix_extra_tasks:
+  - broot

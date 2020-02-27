@@ -1,0 +1,81 @@
+---
+- name: create temporary install directory
+  tempfile:
+    state: directory
+    suffix: .install
+  register: temp_install_dir
+  changed_when: false
+
+- name: get nix install script
+  get_url:
+    url: https://nixos.org/nix/install
+    mode: 0774
+    dest: "{{ temp_install_dir.path }}/nix_install.sh"
+
+- name: delete old nix installation
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/profile/nix.sh
+    - /etc/profile.d/nix.sh
+    - /etc/profile.d/nix.sh.backup-before-nix
+    - /etc/nix
+    - /nix
+    - ~root/.nix-profile
+    - ~root/.nix-defexpr
+    - ~root/.nix-channels
+    - "{{ ansible_env.HOME }}/.nix-profile"
+    - "{{ ansible_env.HOME }}/.nix-defexpr"
+    - "{{ ansible_env.HOME }}/.nix-channels"
+  become: yes
+  when: force_nix_reinstall
+
+- name: stop and remove nix-daemon
+  shell: |
+    set -o pipefail
+    sudo systemctl stop nix-daemon.socket
+    sudo systemctl stop nix-daemon.service
+    sudo systemctl disable nix-daemon.socket
+    sudo systemctl disable nix-daemon.service
+    sudo systemctl daemon-reload
+  args:
+    executable: /bin/bash
+  when: force_nix_reinstall
+
+- name: execute nix install script
+  shell: "{{ temp_install_dir.path }}/nix_install.sh --daemon"
+  args:
+    creates: /nix
+
+- name: Run the Nix daemon
+  become: yes
+  service:
+    name: nix-daemon
+    state: restarted
+    enabled: yes
+
+- name: check if nix packages are already installed
+  shell: "nix-env -q {{ item }}"
+  register: packages_present_check
+  loop: "{{ nix_packages }}"
+  environment:
+    PATH: "/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
+
+- debug:
+    var: packages_present_check
+    verbosity: 2
+
+- name: install nix packages
+  shell: "nix-env -i {{ item.0 }}"
+  become_user: "{{ lookup('env', 'USER')}}"
+  environment:
+    PATH: "/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
+  loop: "{{ nix_packages | zip(packages_present_check.results) | list }}"
+  when: item.1.rc != 0
+  # args:
+    # creates: "{{ ansible_env.HOME }}/.nix-profile/bin/{{ item }}" # does not work for all programs but for the most
+
+- name: include additional tasks for installed packages
+  include_tasks: "extra-{{ item }}.yml"
+  loop: "{{ nix_extra_tasks }}"
