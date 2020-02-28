@@ -22,6 +22,7 @@ packages:
   - thunderbird
   - i3
   - i3status
+  - py3status
   - tmux
   - emacsen-common
   - gcc
