@@ -23,6 +23,7 @@ packages:
   - i3
   - i3status
   - py3status
+  - rofi
   - tmux
   - emacsen-common
   - gcc
