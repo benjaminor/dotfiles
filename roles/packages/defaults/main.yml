@@ -30,6 +30,7 @@ packages:
   - make
   - curl
   - htop
+  - meld
 
 llvm_tools:
   - clang
