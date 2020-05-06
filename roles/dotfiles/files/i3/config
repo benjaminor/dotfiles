@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Return exec --no-startup-id nautilus
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run
@@ -267,7 +267,7 @@ for_window [class=".*(?i)anki.*"] move to workspace "anki"
 
 
 # temp
-bindsym $mod+Shift+a workspace "anki"
-bindsym $mod+Shift+s workspace "signal"
-bindsym $mod+Shift+m workspace "spotify"
-bindsym $mod+Shift+p workspace "private"
+bindsym $mod+F1 workspace "anki"
+bindsym $mod+F2 workspace "signal"
+bindsym $mod+F3 workspace "spotify"
+bindsym $mod+F4 workspace "private"
