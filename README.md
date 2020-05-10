@@ -9,12 +9,10 @@ Mainly inspired by this [collection](https://github.com/webpro/awesome-dotfiles)
 Run:
 
 ```console
-$ cd dotfiles && ./deploy_dotfiles.sh
+$ ./install.sh --help
 ```
 
-This will create a folder dotfiles/bak where you can find your old dotfiles.
-
-Install the necessary or desired packages using the [installation instructions](install_todos.md "TODOs for installation").
+to get information about install script (based on ansible).
 
 ## License
 

@@ -19,7 +19,7 @@ setup_venv() {
 }
 
 usage() {
-  echo "./install [options] [roles...]"
+  echo "./install.sh [options] [roles...]"
   echo "Supported options:"
   echo "  -h/--help"
   echo "  -v/--verbose (repeat up to four times for more verbosity)"
