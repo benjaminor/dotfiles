@@ -1,16 +1,4 @@
 ---
-# - name: get package and repo list
-#   include_vars: "{{ lookup('first_found', params) }}"
-#   vars:
-#     params:
-#       files:
-#         - "{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
-#         - "{{ ansible_distribution }}.yml"
-#         - "{{ ansible_os_family }}.yml"
-#         - "default.yml"
-#       paths:
-#         - 'vars'
-
 - name: download llvm archive signature
   get_url:  url=https://apt.llvm.org/llvm-snapshot.gpg.key dest=/tmp/llvm.gpg.key
 

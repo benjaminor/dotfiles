@@ -35,4 +35,3 @@ packages:
 llvm_tools:
   - clang
   - clang-tools
-  - clang-tools-extra

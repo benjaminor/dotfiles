@@ -1,5 +1,4 @@
 ---
-
 - name: Get rustup_user home
   become: yes
   getent:
@@ -22,7 +21,7 @@
   register: temp_install_dir
   changed_when: false
 
-- name: "Install RustUp"
+- name: Install RustUp
   shell: |
     set -o pipefail
     curl https://sh.rustup.rs -sSf | sh -s -- -y
