@@ -17,6 +17,7 @@
     list_files: yes
     remote_src: yes
   loop: "{{ fonts_to_download}}"
+  ignore_errors: yes
 
 - name: run fc-cache
   shell: fc-cache
