@@ -46,3 +46,9 @@
         state=link
         force=yes
   loop: "{{ (dotfiles_path) | zip(dotfiles) | list }}"
+
+- name: change default shell
+  become: yes
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /usr/bin/fish
