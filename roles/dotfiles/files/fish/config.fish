@@ -36,6 +36,18 @@ if type -q awk
 
 end
 
+function autotmux --on-variable TMUX_SESSION_NAME
+		if test -n "$TMUX_SESSION_NAME" #only if set
+	if test -z $TMUX #not if in TMUX
+	  if tmux has-session -t $TMUX_SESSION_NAME
+		exec tmux new-session -t "$TMUX_SESSION_NAME"
+	  else
+		exec tmux new-session -s "$TMUX_SESSION_NAME"
+	  end
+	end
+  end
+end
+
 # bob-the-fish customization
 set -g theme_show_exit_status yes
 set -g theme_color_scheme solarized-light
