@@ -1,4 +1,6 @@
 ---
+force_conda_reinstall: false
+
 conda_user: "{{ ansible_env.USER | default('root') }}"
 
 pypi_packages:

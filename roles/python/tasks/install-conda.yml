@@ -1,6 +1,4 @@
 ---
-
-
 - name: create temporary install directory
   tempfile:
     state: directory
@@ -22,7 +20,7 @@
 
 - fail:
     msg: "Checksum is not right!"
-  when: st.stat.checksum != 'bfe34e1fa28d6d75a7ad05fd02fa5472275673d5f5621b77380898dee1be15d2'
+  when: st.stat.checksum != '957d2f0f0701c3d1335e3b39f235d197837ad69a944fa6f5d8ad2c686b69df3b'
 
 - name: run conda installer
   shell: "{{ temp_install_dir.path }}/conda_install.sh -b -p {{ conda_user_home }}/conda3"
