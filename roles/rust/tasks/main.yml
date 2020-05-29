@@ -9,11 +9,12 @@
       paths:
         - 'vars'
 
-- name: Install rustup system requirements
+- name: Install cargo requirements
   package:
     name: "{{ item }}"
     state: present
   loop: "{{ rustup_packages }}"
+  become: yes
 
 - name: Install rustup, cargo and creates
   import_tasks: install-rust.yml
