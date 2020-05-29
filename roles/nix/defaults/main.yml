@@ -3,12 +3,14 @@ force_nix_reinstall: false
 
 nix_packages:
   - fzf
-  - okular
+  - kdeApplications.okular
   - atool
+  - autorandr
   - asmfmt
   - broot
   - bat
   - ripgrep
+  - ripgrep-all
   - pandoc
   - fd
   - direnv
