@@ -1,0 +1,35 @@
+---
+- name: show packages to be installed
+  debug:
+    msg: "{{ item }}"
+  loop: "{{ common_packages }}"
+
+- name: Add and remove Zypper repositories
+  zypper_repository:
+    repo: "{{ item }}"
+    state: present
+  loop: "{{ suse_repos }}"
+  ignore_errors: true
+
+- name: zypper refresh
+  shell:
+    cmd: "zypper --gpg-auto-import-keys ref"
+
+- name: install packages with zypper
+  zypper:
+    name: "{{ common_packages }}"
+    state: latest
+  ignore_errors: true
+
+- name: install more packages fore emacs compilation with zypper
+  zypper:
+    name: "{{ suse_emacs_packages }}"
+    state: latest
+  ignore_errors: true
+
+- name: install patterns with zypper
+  zypper:
+    name: "{{ suse_patterns }}"
+    type: pattern
+    state: latest
+  ignore_errors: true

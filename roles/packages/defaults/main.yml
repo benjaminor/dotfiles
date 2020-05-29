@@ -1,21 +1,22 @@
 ---
-repos:
+ubuntu_repos:
   - 'ppa:fish-shell/release-3'
   - 'ppa:phoerious/keepassxc'
   - 'ppa:nextcloud-devs/client'
   - 'deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
   - 'deb-src http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
 
-packages:
+suse_repos:
+  - 'https://download.opensuse.org/repositories/X11:XOrg/openSUSE_Tumbleweed/X11:XOrg.repo'
+  - 'https://download.opensuse.org/repositories/graphics/openSUSE_Tumbleweed/graphics.repo'
+
+common_packages:
   - fish
   - zathura
   - rxvt-unicode
-  - openssh-client
   - iptables
-  - build-essential
   - arandr
   - git
-  - autorandr
   - vlc
   - keepassxc
   - firefox
@@ -25,12 +26,47 @@ packages:
   - py3status
   - rofi
   - tmux
-  - emacsen-common
   - gcc
   - make
   - curl
   - htop
   - meld
+
+ubuntu_packages:
+  - build-essential
+  - emacsen-common
+  - openssh-client
+
+suse_patterns:
+  - devel_basis
+
+# these packages are for compiling emacs from source
+suse_emacs_packages:
+  - harfbuzz-devel
+  - libX11-devel
+  - libjpeg-turbo
+  - giflib-devel
+  - gtk3
+  - gtk3-devel
+  - librsvg
+  - librsvg-devel
+  - systemd-devel
+  - libjansson-devel
+  - ImageMagick-devel
+  - libxml2-devel
+  - m17n-lib-devel
+  - libacl-devel
+  - liblcms2-devel
+  - gpm-devel
+  - libXaw3d-devel
+  - libotf-devel
+  - gconf2-devel
+  - webkit2gtk3-devel
+  - dbus-1-devel
+  - libjpeg8-devel
+  - libXpm-devel
+  - libgnutls-devel
+  - libtiff-devel
 
 llvm_tools:
   - clang

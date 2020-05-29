@@ -12,16 +12,16 @@
   apt_repository:
     repo: "{{ item }}"
     state: present
-  loop: "{{ repos }}"
+  loop: "{{ ubuntu_repos }}"
 
 - name: show packages to be installed
   debug:
     msg: "{{ item }}"
-  loop: "{{ packages }}"
+  loop: "{{ common_packages }}"
 
 - name: install with apt
   apt:
-    name: "{{ packages }}"
+    name: "{{ common_packages }}"
     state: latest
   ignore_errors: True
 
