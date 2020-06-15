@@ -1,0 +1,10 @@
+---
+- name: add home-manager channel
+  shell: "nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager"
+  environment:
+    PATH: "/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
+
+- name: install home-manager
+  shell: "nix-shell '<home-manager>' -A install && home-manager switch"
+  environment:
+    PATH: "/home/{{ ansible_env.HOME }}/.nix-defexpr/channels:/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
