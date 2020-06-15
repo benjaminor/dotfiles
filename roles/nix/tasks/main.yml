@@ -42,6 +42,7 @@
   args:
     executable: /bin/bash
   when: force_nix_reinstall
+  become: yes
 
 - name: execute nix install script
   shell: "{{ temp_install_dir.path }}/nix_install.sh --daemon"
