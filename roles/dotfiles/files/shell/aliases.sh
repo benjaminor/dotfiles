@@ -6,16 +6,20 @@ alias rr="rm -rf"
 
 # some more ls aliases
 alias ls='exa'
-alias ll='exa -aalmg@hH --git'
+alias lg='exa -aalmg@hH --git'
+alias ll='exa -aalmg@hH'
+alias lls='ll --sort=size'
 
 alias emacs='emacs --no-splash'
 alias today='date +"%A, %B %-d, %Y"'
 
 alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
+alias upzy='sudo zypper refresh && sudo zypper update -y'
 alias upfi='fisher self-update && fisher'
 alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage -d && nix optimise-store'
 alias upco='conda update --all -y && conda clean -a -y'
 alias uu='upub && upfi && upnix'
+alias u='upzy && upfi && upnix'
 
 alias night='redshift -l 48.15:11.58 &'
 
