@@ -16,3 +16,4 @@ dotfiles_config:
   - nixpkgs
   - compton.conf
   - tmux
+  - zathura
