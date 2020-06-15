@@ -33,13 +33,12 @@
 
 - name: check if conda3 folder already exists
   stat:
-    path: "{{ ansible_env.USER }}/conda3"
+    path: "{{ conda_user_home }}/conda3"
   register: conda_result
 
 - name: Install conda
   include_tasks: install-conda.yml
   when: (force_conda_reinstall) or (not conda_result.stat.exists)
-
 
 - name: install pypi packages
   shell: pip install "{{ item }}"
