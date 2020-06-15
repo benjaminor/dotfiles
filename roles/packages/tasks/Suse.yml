@@ -15,15 +15,13 @@
   shell:
     cmd: "zypper --gpg-auto-import-keys ref"
 
-- name: install packages with zypper
-  zypper:
-    name: "{{ common_packages }}"
-    state: latest
+- name: switch system packages to packman
+  shell: 'zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman && zypper dup --from packman --allow-vendor-change -y'
   ignore_errors: true
 
-- name: install more packages fore emacs compilation with zypper
+- name: install packages with zypper
   zypper:
-    name: "{{ suse_emacs_packages }}"
+    name: "{{ common_packages + suse_packages + suse_emacs_packages}}"
     state: latest
   ignore_errors: true
 

@@ -1,7 +1,6 @@
 ---
 ubuntu_repos:
   - 'ppa:fish-shell/release-3'
-  - 'ppa:phoerious/keepassxc'
   - 'ppa:nextcloud-devs/client'
   - 'deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
   - 'deb-src http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
@@ -10,32 +9,40 @@ suse_repos:
   - 'https://download.opensuse.org/repositories/X11:XOrg/openSUSE_Tumbleweed/X11:XOrg.repo'
   - 'https://download.opensuse.org/repositories/graphics/openSUSE_Tumbleweed/graphics.repo'
 
+
 common_packages:
   - fish
   - zathura
   - rxvt-unicode
-  - iptables
-  - arandr
   - git
-  - vlc
-  - keepassxc
-  - firefox
   - thunderbird
   - i3
   - i3status
   - py3status
   - rofi
-  - tmux
   - gcc
   - make
-  - curl
-  - htop
-  - meld
+  - nextcloud-desktop
 
 ubuntu_packages:
   - build-essential
   - emacsen-common
   - openssh-client
+
+suse_packages:
+  - anki
+  - libavcodec56
+  - libavcodec57
+  - libavcodec58
+  - libavformat56
+  - libavformat57
+  - libavformat58
+  - libavdevice56
+  - libavdevice57
+  - libavdevice58
+  - seahorse
+  - gnome-keyring
+  - libgnome-keyring
 
 suse_patterns:
   - devel_basis
@@ -70,4 +77,3 @@ suse_emacs_packages:
 
 llvm_tools:
   - clang
-  - clang-tools
