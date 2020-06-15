@@ -28,9 +28,11 @@ ubuntu_packages:
   - build-essential
   - emacsen-common
   - openssh-client
+  - systemctl
 
 suse_packages:
   - anki
+  - systemd
   - libavcodec56
   - libavcodec57
   - libavcodec58
