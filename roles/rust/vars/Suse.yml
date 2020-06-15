@@ -1,7 +1,0 @@
----
-rustup_packages:
-  - curl
-  - gcc
-  - make
-  - openssl-devel
-  - pkgconf-pkg-config
