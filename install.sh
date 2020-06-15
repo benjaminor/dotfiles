@@ -11,6 +11,13 @@ else
 	echo "we have python3"
 fi
 
+if [ ! $(command -v pip) ]; then
+	echo "we require pip"
+	exit 1
+else
+	echo "we have pip"
+fi
+
 setup_venv() {
 	python3 -m pip install virtualenv pexpect
 	python3 -m virtualenv "$VIRTUALENV_DIR"
