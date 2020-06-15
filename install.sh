@@ -11,11 +11,11 @@ else
 	echo "we have python3"
 fi
 
-if [ ! $(command -v pip) ]; then
-	echo "we require pip"
+if [ ! $(command -v pip3) ]; then
+	echo "we require pip3"
 	exit 1
 else
-	echo "we have pip"
+	echo "we have pip3"
 fi
 
 setup_venv() {
