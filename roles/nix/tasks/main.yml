@@ -55,28 +55,7 @@
     state: restarted
     enabled: yes
 
-- name: check if nix packages are already installed
-  shell: "nix-env -q {{ item }}"
-  ignore_errors: True
-  register: packages_present_check
-  loop: "{{ nix_packages }}"
+- name: add unstable pkgs channel
+  shell: "nix-channel --add https://nixos.org/channels/nixpkgs-unstable"
   environment:
     PATH: "/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
-
-- debug:
-    var: packages_present_check
-    verbosity: 2
-
-- add unstable pkgs channel:
-  command: nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-
-- name: install nix packages
-  shell: "nix-env -iA nixpkgs.{{ item.0 }}"
-  environment:
-    PATH: "/nix/var/nix/profiles/default/bin:{{ ansible_env.HOME }}/.nix-profile/bin:{{ ansible_env.PATH}}"
-  loop: "{{ nix_packages | zip(packages_present_check.results) | list }}"
-  when: item.1.rc != 0
-
-- name: include additional tasks for installed packages
-  include_tasks: "extra-{{ item }}.yml"
-  loop: "{{ nix_extra_tasks }}"
