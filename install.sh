@@ -4,7 +4,7 @@ VIRTUALENV_DIR=/tmp/ansible
 
 set -e
 
-if [ $(command -v python3) ]; then
+if [ ! $(command -v python3) ]; then
 	echo "we require python3"
 	exit 1
 else
