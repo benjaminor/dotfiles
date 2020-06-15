@@ -39,6 +39,12 @@ if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 	source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+
+# fix for https://github.com/NixOS/nix/issues/599
+# man from nix has a locale problem
+export LOCALE_ARCHIVE=/usr/bin/locale
+
 
 # add GOPATH to PATH
 GOPATH="$HOME/go"
