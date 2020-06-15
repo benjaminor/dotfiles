@@ -11,8 +11,8 @@ dotfiles_config:
   - i3
   - i3status
   - emacs
-  - direnv
   - shell
   - powerline-shell
+  - nixpkgs
   - compton.conf
   - tmux
