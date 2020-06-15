@@ -28,17 +28,23 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = (with pkgs;[
-    kdeApplications.okular
+
+    # little helpers
     atool
+    ripgrep
+    ripgrep-all
+    pandoc
+    fd
+    exa
+    hexyl
+
+    ranger
+    kdeApplications.okular
     arandr
     autorandr
     autogen
     asmfmt
     signal-desktop
-    ripgrep
-    ripgrep-all
-    pandoc
-    fd
     bandwhich
     redshift
     keepassxc
@@ -47,9 +53,6 @@
     meld
     htop
     iptables
-    ranger
-    exa
-    hexyl
     texlab
     ipcalc
     du-dust
@@ -68,6 +71,9 @@
     # fonts
     inconsolata-nerdfont
     iosevka
+
+    # rust development
+    rustup
 
     # these have all xorg / xauth problems
     # xorg.xbacklight
