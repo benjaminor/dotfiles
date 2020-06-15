@@ -34,11 +34,11 @@
 - name: stop and remove nix-daemon
   shell: |
     set -o pipefail
-    sudo systemctl stop nix-daemon.socket
-    sudo systemctl stop nix-daemon.service
-    sudo systemctl disable nix-daemon.socket
-    sudo systemctl disable nix-daemon.service
-    sudo systemctl daemon-reload
+    systemctl stop nix-daemon.socket
+    systemctl stop nix-daemon.service
+    systemctl disable nix-daemon.socket
+    systemctl disable nix-daemon.service
+    systemctl daemon-reload
   args:
     executable: /bin/bash
   when: force_nix_reinstall
