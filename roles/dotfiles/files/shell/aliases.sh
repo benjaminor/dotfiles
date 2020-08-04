@@ -84,6 +84,7 @@ alias tn="tmux new"
 alias tls="tmux ls"
 
 alias za='zathura'
+alias q='qpdfview --unique'
 alias ports='netstat -tulanp' ## shortcut  for iptables and pass it via sudo#
 alias ipt='sudo /sbin/iptables'
 

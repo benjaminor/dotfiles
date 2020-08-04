@@ -40,7 +40,7 @@ function cht() {
 
 # search jobs fast
 function aux() {
-	ps aux | grep -i "$1" | head -n -1
+	ps aux | grep -i "$1"
 }
 
 # fkill - kill processes - list only the ones you can kill. Modified the earlier script.
@@ -108,4 +108,18 @@ function dv() {
 
 function gdba() {
 	sudo gdb -ex "br $2" -p $(dv "$1")
+}
+
+function rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
 }
