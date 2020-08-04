@@ -81,7 +81,7 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+z fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -126,8 +126,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # bind to monitors
-set $m1 "eDP-1"
-set $m2 "HDMI-1"
+set $m1 "eDP1"
+set $m2 "HDMI1"
 workspace $ws1 output $m1
 workspace $ws2 output $m2
 workspace $ws3 output $m2
@@ -249,17 +249,19 @@ exec --no-startup-id redshift -l 48.18:11.59 -t 6000:2000
 
 assign [class="qpdfview"] $ws1
 assign [class="Emacs"] $ws3
-assign [class="(?i)Firefox"] $ws4
+assign [class="Firefox"] $ws4
+assign [class="Navigator"] $ws4
 assign [class="Thunderbird.*"] $ws5
 
 
-exec --no-startup-id qpdfview
+exec --no-startup-id qpdfview --unique
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/urxvt -e "tmux"'
 exec --no-startup-id emacs
 exec --no-startup-id firefox
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 exec --no-startup-id nextcloud
+exec --no-startup-id nm-applet
 
 for_window [title=".*\(Private Browsing\).*"] move to workspace "private"
 for_window [class=".*(?i)Spotify.*"] move to workspace "spotify"
