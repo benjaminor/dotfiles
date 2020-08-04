@@ -11,7 +11,6 @@ suse_repos:
 
 
 common_packages:
-  - fish
   - zathura
   - rxvt-unicode
   - git
@@ -19,7 +18,6 @@ common_packages:
   - i3
   - i3status
   - py3status
-  - rofi
   - gcc
   - make
   - nextcloud-desktop
@@ -33,6 +31,7 @@ ubuntu_packages:
 suse_packages:
   - anki
   - systemd
+  - xf86-video-intel
   - libavcodec56
   - libavcodec57
   - libavcodec58

@@ -33,10 +33,11 @@
     atool
     ripgrep
     ripgrep-all
-    pandoc
     fd
+    pandoc
     exa
     hexyl
+    feh
 
     ranger
     kdeApplications.okular
@@ -50,6 +51,8 @@
     keepassxc
     vlc
     playerctl
+    mpv
+    # mplayer for anki?
     meld
     htop
     iptables
@@ -62,6 +65,12 @@
     silver-searcher
     pinentry
     curl
+
+    # aspell dictionaries
+    aspell
+    aspellDicts.de
+    aspellDicts.en
+
 
     # language servers
     rust-analyzer
@@ -85,15 +94,140 @@
     # or qt problems
     # virtualbox
     # qpdfview
-    # libsForQt5.vlc
+  # libsForQt5.vlc
     # calibre
-    # tmux
 
   ]);
 
   programs ={
     broot = {
       enable = true;
+    };
+
+    tmux = {
+      enable = true;
+      extraConfig =
+        ''
+set -g mouse on
+unbind C-b
+set -g prefix F1
+bind h split-window -h
+bind v split-window -v
+
+# switch panes using Alt-arrow without prefix
+bind -n M-h select-pane -L
+bind -n M-l select-pane -R
+bind -n M-j select-pane -U
+bind -n M-k select-pane -D
+
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+set -g @continuum-restore 'on'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+'';
+    };
+
+    urxvt = {
+      enable = true;
+      fonts = [
+        "xft:Iosevka:size=12"
+        "xft:Inconsolata Nerd Font:size=12"
+      ];
+    };
+
+    fish = {
+      enable = true;
+      interactiveShellInit =
+        ''
+if not functions -q fisher
+  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+  curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+  fish -c fisher
+end
+
+if test -e ~/conda3/etc/fish/conf.d/conda.fish
+  source ~/conda3/etc/fish/conf.d/conda.fish
+end
+
+set shell_config "$HOME/.config/shell"
+
+if functions -q bass
+  bass source ~/.profile
+  bass source "$shell_config/.commonrc"
+  bass source /etc/profile
+end
+
+if type -q awk
+  set functions_file "$shell_config/functions.sh"
+  set personal_functions_file "$HOME/.functions_personal"
+  if test -e $functions_file
+    for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $functions_file)
+      function $line
+        bass source $functions_file ';' $_ $argv
+      end
+    end
+  end
+  if test -e $personal_functions_file
+    for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $personal_functions_file)
+      function $line
+        bass source $personal_functions_file ';' $_ $argv
+      end
+    end
+  end
+
+end
+
+function autotmux --on-variable TMUX_SESSION_NAME
+    if test -n "$TMUX_SESSION_NAME" #only if set
+  if test -z $TMUX #not if in TMUX
+    if tmux has-session -t $TMUX_SESSION_NAME
+    exec tmux new-session -t "$TMUX_SESSION_NAME"
+    else
+    exec tmux new-session -s "$TMUX_SESSION_NAME"
+    end
+  end
+  end
+end
+
+# bob-the-fish customization
+set -g theme_show_exit_status yes
+set -g theme_color_scheme solarized-light
+set -g theme_nerd_fonts yes
+set -g theme_display_git_ahead_verbose yes
+set -g theme_display_git_dirty_verbose yes
+set -g theme_display_git_stashed_verbose yes
+
+# cheat.sh
+# cht aready defined in functions.sh
+# register completions (on-the-fly, non-cached, because the actual command won't be cached anyway
+complete -c cht -xa '(curl -s cheat.sh/:list)'
+
+# # direnv support for fish
+# eval (direnv hook fish)
+
+source "$HOME/.config/broot/launcher/fish/br" > /dev/null 2> /dev/null; or true
+
+# opam configuration
+source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
+
+'';
     };
 
     direnv = {
@@ -133,8 +267,13 @@ session_name(){
 
     emacs = {
       enable = true;
-      package = pkgs.emacsGit;
+      package = pkgs.emacsGcc;
+      extraPackages = epkgs: (with epkgs;[
+        yaml-mode
+      ]);
     };
+
+    rofi.enable = true;
 
     # texlive.enable = true;
     # texlive.extraPackages = tpkgs: {
@@ -191,4 +330,90 @@ done
   # services.screen-locker.lockCmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -p -t ''";
 
   # services.nextcloud-client.enable = true;
+
+  home.file = {
+    ".xinputrc".text =
+      ''
+run_im none
+
+set bell-style none
+'';
+
+    ".aspell.conf".text = "data-dir /home/ben/.nix-profile/lib/aspell";
+
+  };
+
+  xdg = {
+    enable = true;
+    configFile = {
+      "fish/fishfile".source = ../fish/fishfile;
+    };
+  };
+
+  xresources.extraConfig =
+    ''
+rofi.combi-modi:    window,drun,ssh
+rofi.font:          Iosevka 12
+rofi.modi:          combi
+rofi.fuzzy:			true
+
+!! URxvt Appearance*.font: xft:Iosevka:style=Regular:size=8
+URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata Nerd Font:size=12
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x42
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.loginShell: true
+URxvt.secondaryScroll: true
+! special
+*.foreground:   #d2c5bc
+*.background:   #101010
+*.cursorColor:  #d2c5bc
+
+! black
+*.color0:       #202020
+*.color8:       #606060
+
+! red
+*.color1:       #b91e2e
+*.color9:       #d14548
+
+! green
+*.color2:       #81957c
+*.color10:      #a7b79a
+
+! yellow
+*.color3:       #f9bb80
+*.color11:      #fae3a0
+
+! blue
+*.color4:       #356579
+*.color12:      #7491a1
+
+! magenta
+*.color5:       #2d2031
+*.color13:      #87314e
+
+! cyan
+*.color6:       #268ad3
+*.color14:      #0f829d
+
+! white
+*.color7:       #909090
+*.color15:      #fff0f0
+
+! perl extensions
+URxvt.perl-ext-common: default,matcher,font-size
+URxvt.urlLauncher: firefox
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-slash:  font-size:show
+'';
 }

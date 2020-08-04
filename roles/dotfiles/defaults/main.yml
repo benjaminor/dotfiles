@@ -1,13 +1,11 @@
 ---
 dotfiles_home:
   - .globalrc
-  - .Xresources
   - .profile
   - .bash_profile
   - .bashrc
 
 dotfiles_config:
-  - fish
   - i3
   - i3status
   - emacs
@@ -15,5 +13,4 @@ dotfiles_config:
   - powerline-shell
   - nixpkgs
   - compton.conf
-  - tmux
   - zathura
