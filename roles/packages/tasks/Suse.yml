@@ -21,7 +21,7 @@
 
 - name: install packages with zypper
   zypper:
-    name: "{{ common_packages + suse_packages + suse_emacs_packages}}"
+    name: "{{ common_packages + suse_packages }}"
     state: latest
   ignore_errors: true
 

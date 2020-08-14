@@ -1,6 +1,5 @@
 ---
 ubuntu_repos:
-  - 'ppa:fish-shell/release-3'
   - 'ppa:nextcloud-devs/client'
   - 'deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
   - 'deb-src http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release}} main'
@@ -11,8 +10,6 @@ suse_repos:
 
 
 common_packages:
-  - zathura
-  - rxvt-unicode
   - git
   - thunderbird
   - i3
@@ -29,7 +26,8 @@ ubuntu_packages:
   - systemctl
 
 suse_packages:
-  - anki
+  - anki # don't want to use nixGL for now
+  - clang
   - systemd
   - xf86-video-intel
   - libavcodec56
@@ -47,34 +45,6 @@ suse_packages:
 
 suse_patterns:
   - devel_basis
-
-# these packages are for compiling emacs from source
-suse_emacs_packages:
-  - harfbuzz-devel
-  - libX11-devel
-  - libjpeg-turbo
-  - giflib-devel
-  - gtk3
-  - gtk3-devel
-  - librsvg
-  - librsvg-devel
-  - systemd-devel
-  - libjansson-devel
-  - ImageMagick-devel
-  - libxml2-devel
-  - m17n-lib-devel
-  - libacl-devel
-  - liblcms2-devel
-  - gpm-devel
-  - libXaw3d-devel
-  - libotf-devel
-  - gconf2-devel
-  - webkit2gtk3-devel
-  - dbus-1-devel
-  - libjpeg8-devel
-  - libXpm-devel
-  - libgnutls-devel
-  - libtiff-devel
 
 llvm_tools:
   - clang

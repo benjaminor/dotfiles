@@ -15,6 +15,8 @@
   home.username = "ben";
   home.homeDirectory = "/home/ben";
 
+  # targets.genericLinux.enable = true;
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -38,6 +40,7 @@
     exa
     hexyl
     feh
+    zathura
 
     ranger
     kdeApplications.okular
@@ -52,7 +55,6 @@
     vlc
     playerctl
     mpv
-    # mplayer for anki?
     meld
     htop
     iptables
@@ -88,13 +90,14 @@
     # xorg.xbacklight
     # xorg.xhost
     # xorg.xauth
-    # i3
+    i3
     # i3lock-fancy
-    # i3status
+    i3status
+    polybarFull
     # or qt problems
     # virtualbox
     # qpdfview
-  # libsForQt5.vlc
+    # libsForQt5.vlc
     # calibre
 
   ]);
@@ -154,7 +157,7 @@ run -b '~/.tmux/plugins/tpm/tpm'
 
     fish = {
       enable = true;
-      interactiveShellInit =
+      shellInit =
         ''
 if not functions -q fisher
   set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
@@ -194,6 +197,19 @@ if type -q awk
 
 end
 
+function vterm_printf;
+    if [ -n "$TMUX" ]
+        # tell tmux to pass the escape sequences through
+        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+        printf "\ePtmux;\e\e]%s\007\e\\" "$argv"
+    else if string match -q -- "screen*" "$TERM"
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$argv"
+    else
+        printf "\e]%s\e\\" "$argv"
+    end
+end
+
 function autotmux --on-variable TMUX_SESSION_NAME
     if test -n "$TMUX_SESSION_NAME" #only if set
   if test -z $TMUX #not if in TMUX
@@ -218,11 +234,6 @@ set -g theme_display_git_stashed_verbose yes
 # cht aready defined in functions.sh
 # register completions (on-the-fly, non-cached, because the actual command won't be cached anyway
 complete -c cht -xa '(curl -s cheat.sh/:list)'
-
-# # direnv support for fish
-# eval (direnv hook fish)
-
-source "$HOME/.config/broot/launcher/fish/br" > /dev/null 2> /dev/null; or true
 
 # opam configuration
 source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
@@ -256,76 +267,82 @@ session_name(){
 
 '';
     };
+
     git = {
       enable = true;
       userName = "Benjamin Orthen";
       userEmail = "benjamin@orthen.net";
     };
+
     bat.enable = true;
     neovim.enable = true;
     fzf.enable = true;
 
     emacs = {
       enable = true;
-      package = pkgs.emacsGcc;
-      extraPackages = epkgs: (with epkgs;[
-        yaml-mode
-      ]);
+      package = pkgs.emacsWithPackagesFromUsePackage {
+        alwaysEnsure = true;
+        config = builtins.readFile ../emacs/init.el;
+        package = pkgs.emacsGcc;
+        extraEmacsPackages = epkgs: (with epkgs;[
+          magit
+          lsp-mode
+          helm
+          treemacs
+          projectile
+        ]);
+      };
     };
 
     rofi.enable = true;
 
-    # texlive.enable = true;
-    # texlive.extraPackages = tpkgs: {
-    #   inherit (tpkgs)
-    #     scheme-small
-    #     cm-super
-    #     algorithms
-    #     tikz-cd
-    #     csquotes
-    #     braket
-    #     turnstile
-    #     dashbox
-    #     chktex
-    #     cleveref
-    #     bussproofs
-    #     latexmk;
-    # };
-
-  };
-  fonts.fontconfig.enable = true;
-  services.polybar = {
-    enable = true;
-    config = {
-      "bar/bar" = {
-        monitor = "\${env:MONITOR:}";
-        width = "100%";
-        height = "3%";
-        radius = 0;
-        modules-center = "date";
-      };
-
-      "module/date" = {
-        type = "internal/date";
-        internal = 5;
-        date = "%d.%m.%y";
-        time = "%H:%M";
-        label = "%time%  %date%";
+    texlive = {
+      enable = true;
+      extraPackages = tpkgs : {
+        inherit (tpkgs)
+          scheme-full;
       };
 
     };
-    script =  ''
-for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --reload example &
-done
-'';
   };
 
-  services.lorri.enable = true;
+  fonts.fontconfig.enable = true;
 
+  #   xsession.enable = true;
+  #   xsession.windowManager.command = "i3";
+
+  #   services.polybar = {
+  #     enable = false;
+  #     config = {
+  #       "bar/bar" = {
+  #         monitor = "\${env:MONITOR:}";
+  #         width = "100%";
+  #         height = "3%";
+  #         radius = 0;
+  #         modules-center = "date";
+  #       };
+
+  #       "module/date" = {
+  #         type = "internal/date";
+  #         internal = 5;
+  #         date = "%d.%m.%y";
+  #         time = "%H:%M";
+  #         label = "%time%  %date%";
+  #       };
+
+  #     };
+  #     script =  ''
+  # # for m in $(polybar --list-monitors | cut -d":" -f1); do
+  # #     MONITOR=$m polybar --reload example &
+  # # done
+  # # '';
+  #   };
+
+  #   services.lorri.enable = true;
+
+  #   systemd.user.startServices = true;
   # use i3 as wm
   # xsession.enable = true;
-  systemd.user.startServices = true;
   # xsession.windowManager.i3.enable = true;
   # services.screen-locker.lockCmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -p -t ''";
 
@@ -341,12 +358,32 @@ set bell-style none
 
     ".aspell.conf".text = "data-dir /home/ben/.nix-profile/lib/aspell";
 
+    ".globalrc".source = ../.globalrc;
+
+    ".profile".source = ../.profile;
+
+    ".bash_profile".source = ../.bash_profile;
+
+    ".bashrc".source = ../.bashrc;
   };
 
   xdg = {
     enable = true;
     configFile = {
       "fish/fishfile".source = ../fish/fishfile;
+
+      "polybar".source = ../polybar;
+
+      "zathura".source = ../zathura;
+
+      "i3".source = ../i3;
+
+      "i3status".source = ../i3status;
+
+      "shell".source = ../shell;
+
+      "powerline-shell".source = ../powerline-shell;
+
       "picom".source = ../picom;
 
     };
@@ -357,10 +394,9 @@ set bell-style none
 rofi.combi-modi:    window,drun,ssh
 rofi.font:          Iosevka 12
 rofi.modi:          combi
-rofi.fuzzy:			true
+rofi.fuzzy:     true
 
 !! URxvt Appearance*.font: xft:Iosevka:style=Regular:size=8
-URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Inconsolata Nerd Font:size=12
 URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata Nerd Font:size=12
 URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata Nerd Font:size=12
 URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata Nerd Font:size=12

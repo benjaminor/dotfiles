@@ -1,16 +1,4 @@
 ---
-dotfiles_home:
-  - .globalrc
-  - .profile
-  - .bash_profile
-  - .bashrc
-
 dotfiles_config:
-  - i3
-  - i3status
   - emacs
-  - shell
-  - powerline-shell
   - nixpkgs
-  - compton.conf
-  - zathura
