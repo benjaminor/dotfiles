@@ -118,6 +118,7 @@ spotify {
 	button_next = 4
 	button_play_pause = 1
 	button_previous = 5
+	cache_timeout = 1
 	format = "{title} by {artist}"
 	format_down = "no Spotify"
 }

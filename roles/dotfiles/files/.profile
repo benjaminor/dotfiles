@@ -49,16 +49,10 @@ export LOCALE_ARCHIVE_2_27="$(nix-build --no-out-link "<nixpkgs>" -A glibcLocale
 export LOCALE_ARCHIVE=/usr/bin/locale
 
 
-# add GOPATH to PATH
-GOPATH="$HOME/go"
-PATH="$PATH:$GOPATH/bin"
-
 # set custom NVM dir
 export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/.cargo/bin:$PATH"
-
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export PATH="$PATH:$HOME/.local/bin"
 
