@@ -347,6 +347,8 @@ set bell-style none
     enable = true;
     configFile = {
       "fish/fishfile".source = ../fish/fishfile;
+      "picom".source = ../picom;
+
     };
   };
 
