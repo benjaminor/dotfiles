@@ -33,34 +33,45 @@
 
     # little helpers
     atool
-    ripgrep
-    ripgrep-all
-    fd
     pandoc
     exa
     hexyl
     feh
     zathura
 
+    # command line tools
+    ripgrep
+    ripgrep-all
+    fd
     ranger
+    bandwhich
+    htop
+    iptables
+    du-dust
+    ipcalc
+
+    # software development
+    autogen
+    # tree-sitter
+    ## language servers
+    rust-analyzer
+    yaml-language-server
+    clang-tools # clangd included
+    ## rust development
+    rustup
+
     kdeApplications.okular
     arandr
     autorandr
-    autogen
     asmfmt
     signal-desktop
-    bandwhich
     redshift
     keepassxc
     vlc
     playerctl
     mpv
     meld
-    htop
-    iptables
     texlab
-    ipcalc
-    du-dust
     spotify
     hunspell
     hugo
@@ -72,19 +83,12 @@
     aspell
     aspellDicts.de
     aspellDicts.en
-
-
-    # language servers
-    rust-analyzer
-    yaml-language-server
-    clang-tools # clangd included
+    aspellDicts.es
 
     # fonts
     inconsolata-nerdfont
     iosevka
-
-    # rust development
-    rustup
+    font-awesome
 
     # these have all xorg / xauth problems
     # xorg.xbacklight
