@@ -44,9 +44,10 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 # fix for https://github.com/NixOS/nix/issues/599
 # and for issue https://github.com/NixOS/nixpkgs/issues/38991
 # man from nix has a locale problem
-export LOCALE_ARCHIVE_2_11="$(nix-build --no-out-link "<nixpkgs>" -A glibcLocales)/lib/locale/locale-archive"
+# export LOCALE_ARCHIVE_2_11="$(nix-build --no-out-link "<nixpkgs>" -A glibcLocales)/lib/locale/locale-archive"
+export LOCALE_ARCHIVE_2_11=/usr/bin/locale
 export LOCALE_ARCHIVE_2_27="$(nix-build --no-out-link "<nixpkgs>" -A glibcLocales)/lib/locale/locale-archive"
-export LOCALE_ARCHIVE=/usr/bin/locale
+# export LOCALE_ARCHIVE=/usr/bin/locale
 
 
 # set custom NVM dir
