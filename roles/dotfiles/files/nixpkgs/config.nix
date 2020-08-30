@@ -1,1 +1,1 @@
-{ allowUnfree = true; }
+/home/ben/dotfiles/roles/dotfiles/files/nixpkgs/machines/opensuse/config.nix
