@@ -55,11 +55,11 @@ set bell-style none
   xdg = {
     enable = true;
     configFile = {
-      "polybar".source = "/${configLocation}" + "polybar";
-      "zathura".source = "/${configLocation}" + "zathura";
-      "i3".source = "/${configLocation}" + "i3";
-      "i3status".source = "/${configLocation}" + "i3status";
-      "picom".source = "/${configLocation}" + "picom";
+      "polybar".source = (resolveConfigLocation "polybar");
+      "zathura".source = (resolveConfigLocation "zathura");
+      "i3".source = (resolveConfigLocation "i3");
+      "i3status".source = (resolveConfigLocation "i3status");
+      "picom".source = (resolveConfigLocation "picom");
     };
 
   };

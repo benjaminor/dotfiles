@@ -248,7 +248,7 @@ session_name(){
         enable = true;
         package = pkgs.emacsWithPackagesFromUsePackage {
           alwaysEnsure = true;
-          config = ("/${configLocation}" + "emacs/init.el");
+          config = (resolveConfigLocation "emacs/init.el");
           package = pkgs.emacsGcc;
           extraEmacsPackages = epkgs: (with epkgs;[
             magit
@@ -317,23 +317,23 @@ session_name(){
     home.file = {
       ".aspell.conf".text = "data-dir /home/ben/.nix-profile/lib/aspell";
 
-      ".globalrc".source = ("/${configLocation}" + "./.globalrc");
+      ".globalrc".source = (resolveConfigLocation ".globalrc");
 
-      ".profile".source = ("/${configLocation}" + "./.profile");
+      ".profile".source = (resolveConfigLocation "./.profile");
 
-      ".bash_profile".source = ("/${configLocation}" + "./bash_profile");
+      ".bash_profile".source = (resolveConfigLocation "./bash_profile");
 
-      ".bashrc".source = ("/${configLocation}"+ "./.bashrc");
+      ".bashrc".source = (resolveConfigLocation "./.bashrc");
     };
 
     xdg = {
       enable = true;
       configFile = {
-        "fish/fishfile".source = "/${configLocation}" + "fish/fishfile";
+        "fish/fishfile".source = (resolveConfigLocation "fish/fishfile");
 
-        "shell".source = "/${configLocation}" + "shell";
+        "shell".source = (resolveConfigLocation "shell");
 
-        "powerline-shell".source = "/${configLocation}" + "powerline-shell";
+        "powerline-shell".source = (resolveConfigLocation "powerline-shell");
       };
     };
 
