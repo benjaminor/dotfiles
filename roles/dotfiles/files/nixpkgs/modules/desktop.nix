@@ -3,69 +3,76 @@
 let
   common = import ./common.nix;
 in
-# TODO: later import here only, put programs in extra modules like sw-devel, images, e.g.
 (with common;
-{
-  home.packages = (with pkgs;[
-    feh
-    zathura
-
-    kdeApplications.okular
-
-    signal-desktop
-    redshift
-    keepassxc # TODO: is this really desktop?
-    vlc
-    spotify
-
-    i3
-    i3status
-    polybarFull
-
-    # these have all xorg / xauth problems
-    # xorg.xbacklight
-    # xorg.xhost
-    # xorg.xauth
-    # or qt problems
-    # virtualbox
-    # qpdfview
-    # libsForQt5.vlc
-    # calibre
-
-  ]);
-
-  programs.urxvt = {
-    enable = true;
-    fonts = [
-      "xft:Iosevka:size=12"
-      "xft:Inconsolata Nerd Font:size=12"
+  {
+    imports = [
+      ./fonts.nix
     ];
-  };
 
-  home.file = {
-    ".xinputrc".text =
-      ''
+    home.packages = (with pkgs;[
+      arandr
+      autorandr
+
+      feh
+      zathura
+      kdeApplications.okular
+
+      signal-desktop
+      redshift
+      keepassxc # TODO: is this really desktop?
+      vlc
+      spotify
+
+      i3
+      i3status
+      polybarFull
+      playerctl
+
+      # these have all xorg / xauth problems
+      # xorg.xbacklight
+      # xorg.xhost
+      # xorg.xauth
+      # or qt problems
+      # virtualbox
+      # qpdfview
+      # libsForQt5.vlc
+      # calibre
+
+    ]);
+
+    programs.urxvt = {
+      enable = true;
+      fonts = [
+        "xft:Iosevka:size=12"
+        "xft:Inconsolata Nerd Font:size=12"
+      ];
+    };
+    programs.rofi.enable = true;
+
+    home.file = {
+      ".xinputrc".text =
+        ''
 run_im none
 
 set bell-style none
 '';
 
-  };
-
-  xdg = {
-    enable = true;
-    configFile = {
-      "polybar".source = (resolveConfigLocation "polybar");
-      "zathura".source = (resolveConfigLocation "zathura");
-      "i3".source = (resolveConfigLocation "i3");
-      "i3status".source = (resolveConfigLocation "i3status");
-      "picom".source = (resolveConfigLocation "picom");
     };
 
-  };
+    xdg = {
+      enable = true;
+      configFile = {
+        "polybar".source = (resolveConfigLocation "polybar");
+        "zathura".source = (resolveConfigLocation "zathura");
+        "i3".source = (resolveConfigLocation "i3");
+        "i3status".source = (resolveConfigLocation "i3status");
+        "picom".source = (resolveConfigLocation "picom");
+      };
 
-  xresources.extraConfig =
-    ''
+    };
+
+    xresources.extraConfig =
+      ''
 rofi.combi-modi:    window,drun,ssh
 rofi.font:          Iosevka 12
 rofi.modi:          combi
@@ -130,4 +137,4 @@ URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-slash:  font-size:show
 '';
 
-})
+  })

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   common = import ./common.nix;
@@ -6,30 +6,7 @@ in
 (with common;
   {
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-
-    # Home Manager needs a bit of information about you and the
-    # paths it should manage.
-    home.username = builtins.getEnv "USER";
-    home.homeDirectory = builtins.getEnv "HOME";
-
-    # targets.genericLinux.enable = true;
-
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
-    home.stateVersion = "20.09";
-
-    nixpkgs.config.allowUnfree = true;
-
     home.packages = (with pkgs;[
-
       # little helpers
       atool
       pandoc
@@ -47,42 +24,13 @@ in
       du-dust
       ipcalc
 
-      # software development
-      autogen
-      # tree-sitter
-      ## language servers
-      rust-analyzer
-      yaml-language-server
-      clang-tools # clangd included
-      ## rust development
-      rustup
-
-      arandr
-      autorandr
-      asmfmt
-      playerctl
       mpv
-      meld
-      texlab
-      hunspell
-      hugo
       silver-searcher
       pinentry
       curl
-
-      # aspell dictionaries
-      aspell
-      aspellDicts.de
-      aspellDicts.en
-      aspellDicts.es
-
-      # fonts
-      inconsolata-nerdfont
-      iosevka
-      font-awesome
     ]);
 
-    programs ={
+    programs = {
       broot = {
         enable = true;
       };
@@ -244,24 +192,6 @@ session_name(){
       neovim.enable = true;
       fzf.enable = true;
 
-      emacs = {
-        enable = true;
-        package = pkgs.emacsWithPackagesFromUsePackage {
-          alwaysEnsure = true;
-          config = (resolveConfigLocation "emacs/init.el");
-          package = pkgs.emacsGcc;
-          extraEmacsPackages = epkgs: (with epkgs;[
-            magit
-            lsp-mode
-            helm
-            treemacs
-            projectile
-          ]);
-        };
-      };
-
-      rofi.enable = true;
-
       texlive = {
         enable = true;
         extraPackages = tpkgs : {
@@ -271,11 +201,6 @@ session_name(){
 
       };
     };
-
-    fonts.fontconfig.enable = true;
-
-    #   xsession.enable = true;
-    #   xsession.windowManager.command = "i3";
 
     #   services.polybar = {
     #     enable = false;
@@ -315,7 +240,6 @@ session_name(){
     # services.nextcloud-client.enable = true;
 
     home.file = {
-      ".aspell.conf".text = "data-dir /home/ben/.nix-profile/lib/aspell";
 
       ".globalrc".source = (resolveConfigLocation ".globalrc");
 
