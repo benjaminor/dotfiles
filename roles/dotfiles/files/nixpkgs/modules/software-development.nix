@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = (with pkgs;[
+  home.packages = (with pkgs; [
     autogen
     # tree-sitter
     yaml-language-server
@@ -14,9 +14,6 @@
 
     nixfmt
     asmfmt
-
-    # tex
-    texlab
 
     meld
 

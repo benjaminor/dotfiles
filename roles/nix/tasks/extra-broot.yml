@@ -1,9 +1,0 @@
----
-- name: check if broot is installed in cargo
-  stat:
-    path: "{{ ansible_user_dir}}/.nix-profile/bin/broot"
-  register:
-    st
-- name: run broot install for scripts
-  when: st.stat.exists
-  shell: "{{ ansible_user_dir}}/.nix-profile/bin/broot --install"
