@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
-let common = import ./common.nix;
-in (with common; {
+let helper = import ./helper.nix;
+in (with helper; {
+
+  imports = [ ./nix-utils.nix ];
 
   home.packages = (with pkgs; [
     # little helpers
