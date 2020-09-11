@@ -1,0 +1,38 @@
+{
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "251ca422b038bccf0679cde3d1da1a7051b97f12",
+        "sha256": "0kj1r2p33ghy13mwfzqg1byhrjacz01vii3jwbg7zcvsxh99n6q1",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/251ca422b038bccf0679cde3d1da1a7051b97f12.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "home-manager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
+        "homepage": "https://rycee.gitlab.io/home-manager/",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "249650a07ee2d949fa599f3177a8c234adbd1bee",
+        "sha256": "0x858b7i15kx74aqwgi2n5ls7zjhcky95z9vbxfdlawmaz371dma",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/home-manager/archive/249650a07ee2d949fa599f3177a8c234adbd1bee.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1839c5cd7b85a5b5bc4586d9bc0b1d9439d34b81",
+        "sha256": "1l23ii5dhhk5hynmzm00bdggxsfj6imb8ncppmpw6qdci3ilp3im",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/1839c5cd7b85a5b5bc4586d9bc0b1d9439d34b81.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

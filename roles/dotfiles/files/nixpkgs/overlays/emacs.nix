@@ -1,3 +1,1 @@
-import (builtins.fetchTarball {
-  url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-})
+let sources = import ../nix/sources.nix; in (import sources.emacs-overlay)
