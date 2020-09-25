@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "3dad61ef193233b8c07155b7fcfc80bdf5e995fc",
-        "sha256": "19n40nkbscd7v71nc0nza9k4yxfv0gl4zh74gpc0ydyb4nqgvsrs",
+        "rev": "b2de1fa2391333d673ed3c761eadf474202cc13d",
+        "sha256": "0wah60i573ki13cvh2qjm8hnkmqavm38h9bvdd270pyiqlk7l9ih",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/3dad61ef193233b8c07155b7fcfc80bdf5e995fc.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/b2de1fa2391333d673ed3c761eadf474202cc13d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -17,10 +17,22 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "96d7de6db18d9a5bf254ddf3525bb4ef1d2a6bda",
-        "sha256": "0dc4zji0vhmlbnx9fh5iihd3jbn0j2knq5s6ryly70k7mnzrm4ml",
+        "rev": "abfb4cde51856dbee909f373b59cd941f51c2170",
+        "sha256": "0vm304vcvp5p0bcqj9rapzkchvdbs2alssg5m8a590vz41r2bp33",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/96d7de6db18d9a5bf254ddf3525bb4ef1d2a6bda.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/abfb4cde51856dbee909f373b59cd941f51c2170.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "29ddaaf4e099c3ac0647f5b652469dfc79cd3b53",
+        "sha256": "1va6myp07gkspgxfch8z3rs9nyvys6jmgzkys6a2c4j09qxp1bs0",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/29ddaaf4e099c3ac0647f5b652469dfc79cd3b53.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
