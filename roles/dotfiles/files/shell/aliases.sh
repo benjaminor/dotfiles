@@ -5,7 +5,6 @@ alias mv='mv -i'
 alias rr="rm -rf"
 
 # some more ls aliases
-alias ls='exa'
 alias lg='exa -aalmg@hH --git'
 alias ll='exa -aalmg@hH'
 alias lls='ll --sort=size'
@@ -16,15 +15,20 @@ alias today='date +"%A, %B %-d, %Y"'
 alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
 alias upzy='sudo zypper refresh && sudo zypper update -y'
 alias upfi='fisher self-update && fisher'
+alias upar='sudo pacman -Syu && sudo pacman -Scc'
 alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage -d && nix optimise-store'
 alias upco='conda update --all -y && conda clean -a -y'
-alias uu='upub && upfi && upnix'
-alias u='upzy && upfi && upnix'
+alias up='upfi && upnix'
+alias uu='upub && up'
+alias us='upzy && up'
+alias ua='upar && up'
+
+alias hs='$XDG_CONFIG_HOME/nixpkgs/switch.sh'
+alias nu='$XDG_CONFIG_HOME/nixpkgs/niv-update.sh'
 
 alias night='redshift -l 48.15:11.58 &'
 
 alias psudo='sudo env PATH="$PATH"'
-alias savilerow='/home/data/savilerow-1.6.5-linux/savilerow'
 alias vale='/usr/local/bin/vale'
 alias semacs='emacsclient -n -a emacs'
 
