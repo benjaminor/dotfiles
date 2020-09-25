@@ -11,6 +11,7 @@ in (with helper; {
     pandoc
     exa
     hexyl
+    mosh
 
     # command line tools
     ripgrep
