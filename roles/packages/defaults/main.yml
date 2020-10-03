@@ -29,6 +29,7 @@ suse_packages:
   - anki # don't want to use nixGL for now
   - clang
   - systemd
+  - borgmatic
   - xf86-video-intel
   - libavcodec56
   - libavcodec57

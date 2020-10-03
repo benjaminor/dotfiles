@@ -2,7 +2,7 @@
 
 let helper = import ./helper.nix;
 in (with helper; {
-  imports = [ ./fonts.nix ];
+  imports = [ ./fonts.nix ./communication.nix ];
 
   home.packages = (with pkgs; [
     arandr
@@ -12,7 +12,6 @@ in (with helper; {
     zathura
     kdeApplications.okular
 
-    signal-desktop
     redshift
     keepassxc # TODO: is this really desktop?
     vlc
@@ -22,6 +21,8 @@ in (with helper; {
     i3status
     polybarFull
     playerctl
+
+    borgbackup
 
     # these have all xorg / xauth problems
     # xorg.xbacklight

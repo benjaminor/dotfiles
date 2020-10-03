@@ -98,3 +98,8 @@ alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
 alias firewall=iptlist
+
+alias ah='autorandr -l home'
+alias am='autorandr -l mobile'
+
+alias xc='xclip -sel clip'
