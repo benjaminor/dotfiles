@@ -12,6 +12,8 @@ in (with helper; {
     exa
     hexyl
     mosh
+    zip
+    tldr
 
     # command line tools
     ripgrep
@@ -235,7 +237,7 @@ in (with helper; {
 
     ".profile".source = (resolveConfigLocation "./.profile");
 
-    ".bash_profile".source = (resolveConfigLocation "./bash_profile");
+    ".bash_profile".source = (resolveConfigLocation "./.bash_profile");
 
     ".bashrc".source = (resolveConfigLocation "./.bashrc");
   };
