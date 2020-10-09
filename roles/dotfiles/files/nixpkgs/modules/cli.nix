@@ -249,7 +249,7 @@ in (with helper; {
 
       "shell".source = (resolveConfigLocation "shell");
 
-      "powerline-shell".source = (resolveConfigLocation "powerline-shell");
+      # "powerline-shell".source = (resolveConfigLocation "powerline-shell");
     };
   };
 
