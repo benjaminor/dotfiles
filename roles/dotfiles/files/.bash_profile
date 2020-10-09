@@ -5,5 +5,3 @@
 
 # source everything else
 [[ -e ~/.bashrc ]] && source ~/.bashrc
-
-source "$HOME"/.config/broot/launcher/bash/br
