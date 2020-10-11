@@ -190,7 +190,12 @@ in (with helper; {
 
     bat.enable = true;
     neovim.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      # changeDirWidgetCommand = "fd --type d";
+    };
 
   };
 

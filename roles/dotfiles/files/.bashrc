@@ -120,9 +120,9 @@ fi
 #	PS1=$(powerline-shell $?)
 # }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
 # cd options
 shopt -s autocd cdspell dirspell
@@ -160,16 +160,12 @@ man() {
 
 # uses 'thefuck' to fix common command mistakes
 # https://github.com/nvbn/thefuck
-alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+# alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
 # enable keybindings for fzf
-if command -v fzf-share >/dev/null; then
-	source "$(fzf-share)/key-bindings.bash"
-fi
+# if command -v fzf-share >/dev/null; then
+#	source "$(fzf-share)/key-bindings.bash"
+# fi
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-source $HOME/.config/broot/launcher/bash/br
