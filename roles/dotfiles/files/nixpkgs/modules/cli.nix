@@ -158,6 +158,16 @@ in (with helper; {
         # opam configuration
         source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
 
+        if test "$TERM" = "tramp"
+           function fish_prompt
+           echo "\$ "
+        end
+
+           function fish_right_prompt; end
+           function fish_greeting; end
+           function fish_title; end
+        end
+
       '';
     };
 
