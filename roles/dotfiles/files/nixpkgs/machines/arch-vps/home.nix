@@ -7,7 +7,5 @@
     ../../modules/git.nix
   ];
 
-  home.packages = (with pkgs; [ wireguard-tools ]);
-
   targets.genericLinux.enable = true;
 }

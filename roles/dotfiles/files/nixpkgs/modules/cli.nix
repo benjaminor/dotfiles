@@ -24,12 +24,15 @@ in (with helper; {
     htop
     iptables
     du-dust
-    ipcalc
 
     mpv
     silver-searcher
     pinentry
     curl
+
+    # networking
+    wireguard-tools
+    ipcalc
   ]);
 
   programs = {
