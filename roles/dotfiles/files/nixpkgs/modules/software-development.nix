@@ -17,6 +17,10 @@
 
     meld
 
+    # c and c++
+    cmake
+    ninja
+
     # for website development
     hugo
   ]);
