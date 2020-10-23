@@ -14,6 +14,7 @@ in (with helper; {
     mosh
     zip
     tldr
+    rsync
 
     # command line tools
     ripgrep
