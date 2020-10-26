@@ -15,6 +15,7 @@ in (with helper; {
     zip
     tldr
     rsync
+    tree
 
     # command line tools
     ripgrep
