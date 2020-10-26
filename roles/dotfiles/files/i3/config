@@ -213,12 +213,12 @@ bindsym XF86AudioMute exec amixer -D pulse -q sset Master 1+ toggle
 
 
 # playerctl to play,bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym $mod+n exec playerctl next
-bindsym $mod+m exec playerctl previous
-bindsym $mod+comma exec playerctl play-pause
+bindsym XF86AudioPause exec "playerctl --player=spotify,%any pause"
+bindsym XF86AudioNext exec "playerctl --player=spotify,%any next"
+bindsym XF86AudioPrev exec "playerctl --player=spotify,%any previous"
+bindsym $mod+n exec "playerctl --player=spotify,%any next"
+bindsym $mod+m exec "playerctl --player=spotify,%any previous"
+bindsym $mod+comma exec "playerctl --player=spotify,%any play-pause"
 
 
 # Sreen brightness controls
