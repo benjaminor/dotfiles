@@ -38,7 +38,26 @@ in (with helper; {
 
   programs.urxvt = {
     enable = true;
-    fonts = [ "xft:Iosevka:size=12" "xft:Inconsolata Nerd Font:size=12" ];
+    fonts = [ "xft:iosevkanerdfontmono:size=12:hinting=true:antialias=true" ];
+    extraConfig = {
+      boldFont =
+        "xft:iosevkanerdfontmono:size=12:hinting=true:antialias=true:style=Bold";
+      italicFont =
+        "xft:iosevkanerdfontmono:size=12:hinting=true:antialias=true:style=Italic";
+      boldItalicFont =
+        "xft:iosevkanerdfontmono:size=12:hinting=true:antialias=true:style=Bold Italic";
+      letterSpace = 0;
+      lineSpace = 0;
+      geometry = "92x42";
+      internalBorder = 24;
+      cursorBlink = true;
+      cursorUnderline = false;
+      urgentOnBell = true;
+      depth = 24;
+      loginShell = true;
+      secondaryScroll = true;
+
+    };
   };
   programs.rofi.enable = true;
 
@@ -67,22 +86,8 @@ in (with helper; {
     rofi.combi-modi:    window,drun,ssh
     rofi.font:          Iosevka 12
     rofi.modi:          combi
-    rofi.fuzzy:     true
+    rofi.fuzzy:         true
 
-    !! URxvt Appearance*.font: xft:Iosevka:style=Regular:size=8
-    URxvt.boldFont: xft:Iosevka:style=Bold:size=12,xft:Inconsolata Nerd Font:size=12
-    URxvt.italicFont: xft:Iosevka:style=Italic:size=12,xft:Inconsolata Nerd Font:size=12
-    URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12,xft:Inconsolata Nerd Font:size=12
-    URxvt.letterSpace: 0
-    URxvt.lineSpace: 0
-    URxvt.geometry: 92x42
-    URxvt.internalBorder: 24
-    URxvt.cursorBlink: true
-    URxvt.cursorUnderline: false
-    URxvt.urgentOnBell: true
-    URxvt.depth: 24
-    URxvt.loginShell: true
-    URxvt.secondaryScroll: true
     ! special
     *.foreground:   #d2c5bc
     *.background:   #101010
@@ -90,7 +95,7 @@ in (with helper; {
 
     ! black
     *.color0:       #202020
-    *.color8:       #606060
+    *.color8:       #2c2c2c
 
     ! red
     *.color1:       #b91e2e

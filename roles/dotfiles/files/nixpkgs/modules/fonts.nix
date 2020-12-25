@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = (with pkgs; [ inconsolata-nerdfont iosevka font-awesome ]);
+  home.packages = (with pkgs; [ iosevka font-awesome fira-code nerdfonts ]);
 
   fonts.fontconfig.enable = true;
 }
