@@ -14,7 +14,7 @@ alias today='date +"%A, %B %-d, %Y"'
 
 alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
 alias upzy='sudo zypper refresh && sudo zypper update -y'
-alias upfi='fisher self-update && fisher'
+alias upfi='fisher update'
 alias upar='sudo pacman -Syu && sudo pacman -Scc'
 alias upnix='nix-channel --update && nix-env -u && nix-collect-garbage -d && nix optimise-store'
 alias upco='conda update --all -y && conda clean -a -y'
