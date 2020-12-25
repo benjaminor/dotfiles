@@ -9,6 +9,7 @@ in (with helper; {
     aspellDicts.de
     aspellDicts.en
     aspellDicts.es
+    aspellDicts.fr
   ]);
 
   programs = {
@@ -18,17 +19,6 @@ in (with helper; {
         alwaysEnsure = true;
         config = (resolveConfigLocation "emacs/init.el");
         package = pkgs.emacsGcc;
-        extraEmacsPackages = epkgs:
-          (with epkgs; [
-            magit
-            lsp-mode
-            helm
-            treemacs
-            projectile
-            evil
-            company
-            yasnippet
-          ]);
       };
     };
 
