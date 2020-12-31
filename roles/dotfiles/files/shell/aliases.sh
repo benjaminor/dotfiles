@@ -10,6 +10,8 @@ alias ll='exa -aalmg@hH'
 alias lls='ll --sort=size'
 
 alias emacs='emacs --no-splash'
+alias vi='nvim'
+alias vim='nvim'
 alias today='date +"%A, %B %-d, %Y"'
 
 alias upub='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
