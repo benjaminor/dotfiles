@@ -17,8 +17,12 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "6e3544b73afea08d1428b159b2a57dc9d1724493",
-        "sha256": "0q16fnpjrrgjcf7f6d5xnzp17q5bn5a8mahcrql0a5kz294g3i8g",
+        "rev": "49259bf1c3335c0f891106aa2df6539d1cb96437",
+        "sha256": "1g9d0wbq1va1809qi9nyrngnqq5fsii3khfvnlz77pd8zajgd6ja",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/49259bf1c3335c0f891106aa2df6539d1cb96437.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "fish-colored-man": {
         "branch": "master",
         "description": "Color-enabled man pages plugin for fish-shell",
@@ -61,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b9597e57747f227317affdfa2f97fee8e167c33f",
-        "sha256": "029ymsgc3d7fj4fw6r9n488p20vrb1vqwpb66d2qc1ha33fb541v",
+        "rev": "8127799f79ee96129b295d78294f40a54078131f",
+        "sha256": "0iji8nxa66s409pvjwi370ycsw4m74w6b3ywnjpfkl2filpapjns",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/b9597e57747f227317affdfa2f97fee8e167c33f.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/8127799f79ee96129b295d78294f40a54078131f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -73,10 +77,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098",
-        "sha256": "1y2h9wl7w60maa2m4xw9231xdr325xynzpph8xr4j5vsznygv986",
+        "rev": "3cd7914b2c4cff48927e11c216dadfab7d903fe5",
+        "sha256": "1agq4nvbhrylf2s77kb4xhh9k7xcwdwggq764k4jgsbs70py8cw3",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/3cd7914b2c4cff48927e11c216dadfab7d903fe5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -85,8 +89,12 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2080afd039999a58d60596d04cefb32ef5fcc2a2",
-        "sha256": "0i677swvj8fxfwg3jibd0xl33rn0rq0adnniim8jnp384whnh8ry",
+        "rev": "2fbc36f3d891c86ae34dc0414bc78e74e8911218",
+        "sha256": "1ris5infk1x6vvk2wx7ijv6gy5ads75gfkwkmm9df955xckfqsg8",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/2fbc36f3d891c86ae34dc0414bc78e74e8911218.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "pisces": {
         "branch": "master",
         "description": "♓️ Fish shell plugin that helps you to work with paired symbols in the command line",
