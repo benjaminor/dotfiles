@@ -88,94 +88,96 @@ in (with helper; {
       enable = true;
       plugins = fishPlugins.plugins;
       shellInit = ''
-         if not functions -q fisher
-           set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-           curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-           fish -c fisher
-         end
+        # if not functions -q fisher
+        #   set -q XDG_CONFIG_HOME;
+        #   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+        # end
+        if test -e ~/conda3/etc/fish/conf.d/conda.fish
+            source ~/conda3/etc/fish/conf.d/conda.fish
+          end
 
-         if test -e ~/conda3/etc/fish/conf.d/conda.fish
-           source ~/conda3/etc/fish/conf.d/conda.fish
-         end
+          # for f in "XDG_CONFIG_HOME/fish/conf.d/*.fish
+          #   source $f
+          # end
 
-         set shell_config "$HOME/.config/shell"
+          set shell_config "$HOME/.config/shell"
 
-         if functions -q bass
-           bass source ~/.profile
-           bass source "$shell_config/.commonrc"
-           bass source /etc/profile
-         end
+          if functions -q bass
+            bass source ~/.profile
+            bass source "$shell_config/.commonrc"
+            bass source /etc/profile
+          end
 
-         if type -q awk
-           set functions_file "$shell_config/functions.sh"
-           set personal_functions_file "$HOME/.functions_personal"
-           if test -e $functions_file
-             for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $functions_file)
-               function $line
-                 bass source $functions_file ';' $_ $argv
-               end
-             end
-           end
-           if test -e $personal_functions_file
-             for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $personal_functions_file)
-               function $line
-                 bass source $personal_functions_file ';' $_ $argv
-               end
-             end
-           end
+          if type -q awk
+            set functions_file "$shell_config/functions.sh"
+            set personal_functions_file "$HOME/.functions_personal"
+            if test -e $functions_file
+              for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $functions_file)
+                function $line
+                  bass source $functions_file ';' $_ $argv
+                end
+              end
+            end
+            if test -e $personal_functions_file
+              for line in (awk '/function .*\(\)/ {print substr($2, 1, length($2)-2)}' $personal_functions_file)
+                function $line
+                  bass source $personal_functions_file ';' $_ $argv
+                end
+              end
+            end
 
-         end
+          end
 
-        function vterm_printf;
-             if [ -n "$TMUX" ]
-                 # tell tmux to pass the escape sequences through
-                 # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
-                 printf "\ePtmux;\e\e]%s\007\e\\" "$argv"
-             else if string match -q -- "screen*" "$TERM"
-                 # GNU screen (screen, screen-256color, screen-256color-bce)
-                 printf "\eP\e]%s\007\e\\" "$argv"
-             else
-                 printf "\e]%s\e\\" "$argv"
-             end
-         end
+         function vterm_printf;
+              if [ -n "$TMUX" ]
+                  # tell tmux to pass the escape sequences through
+                  # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+                  printf "\ePtmux;\e\e]%s\007\e\\" "$argv"
+              else if string match -q -- "screen*" "$TERM"
+                  # GNU screen (screen, screen-256color, screen-256color-bce)
+                  printf "\eP\e]%s\007\e\\" "$argv"
+              else
+                  printf "\e]%s\e\\" "$argv"
+              end
+          end
 
-         function autotmux --on-variable TMUX_SESSION_NAME
-             if test -n "$TMUX_SESSION_NAME" #only if set
-           if test -z $TMUX #not if in TMUX
-             if tmux has-session -t $TMUX_SESSION_NAME
-             exec tmux new-session -t "$TMUX_SESSION_NAME"
-             else
-             exec tmux new-session -s "$TMUX_SESSION_NAME"
-             end
-           end
-           end
-         end
+          function autotmux --on-variable TMUX_SESSION_NAME
+              if test -n "$TMUX_SESSION_NAME" #only if set
+            if test -z $TMUX #not if in TMUX
+              if tmux has-session -t $TMUX_SESSION_NAME
+              exec tmux new-session -t "$TMUX_SESSION_NAME"
+              else
+              exec tmux new-session -s "$TMUX_SESSION_NAME"
+              end
+            end
+            end
+          end
 
-         # bob-the-fish customization
-         set -g theme_show_exit_status yes
-         set -g theme_color_scheme solarized-light
-         set -g theme_nerd_fonts yes
-         set -g theme_display_git_ahead_verbose yes
-         set -g theme_display_git_dirty_verbose yes
-         set -g theme_display_git_stashed_verbose yes
+          # bob-the-fish customization
+          set -g theme_show_exit_status yes
+          set -g theme_color_scheme solarized-light
+          set -g theme_nerd_fonts yes
+          set -g theme_display_git_ahead_verbose yes
+          set -g theme_display_git_dirty_verbose yes
+          set -g theme_display_git_stashed_verbose yes
 
-         # cheat.sh
-         # cht aready defined in functions.sh
-         # register completions (on-the-fly, non-cached, because the actual command won't be cached anyway
-         complete -c cht -xa '(curl -s cheat.sh/:list)'
+          # cheat.sh
+          # cht aready defined in functions.sh
+          # register completions (on-the-fly, non-cached, because the actual command won't be cached anyway
+          complete -c cht -xa '(curl -s cheat.sh/:list)'
 
-         # opam configuration
-         source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
+          # opam configuration
+          source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
 
-         if test "$TERM" = "tramp"
-            function fish_prompt
-            echo "\$ "
-         end
+          if test "$TERM" = "tramp"
+             function fish_prompt
+             echo "\$ "
+          end
 
-            function fish_right_prompt; end
-            function fish_greeting; end
-            function fish_title; end
-         end
+             function fish_right_prompt; end
+             function fish_greeting; end
+             function fish_title; end
+          end
 
       '';
     };

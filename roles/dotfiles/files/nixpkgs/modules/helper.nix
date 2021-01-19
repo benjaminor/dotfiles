@@ -1,8 +1,5 @@
-let
-  configLocation = ../..;
-in
-{
-  resolveConfigLocation = (configFile:
-    "/${configLocation}" + ("/" + configFile)
-  );
+let configLocation = ../..;
+in {
+  resolveConfigLocation =
+    (configFile: "/${configLocation}" + ("/" + configFile));
 }
