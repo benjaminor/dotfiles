@@ -1,4 +1,16 @@
 {
+    "bass": {
+        "branch": "master",
+        "description": "Make Bash utilities usable in Fish shell",
+        "homepage": null,
+        "owner": "edc",
+        "repo": "bass",
+        "rev": "df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b",
+        "sha256": "1dgydrza6lvx3dl9spkla1g728x5rr76mqrwk2afrl732439y6jl",
+        "type": "tarball",
+        "url": "https://github.com/edc/bass/archive/df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
@@ -7,8 +19,40 @@
         "repo": "emacs-overlay",
         "rev": "6e3544b73afea08d1428b159b2a57dc9d1724493",
         "sha256": "0q16fnpjrrgjcf7f6d5xnzp17q5bn5a8mahcrql0a5kz294g3i8g",
+    "fish-colored-man": {
+        "branch": "master",
+        "description": "Color-enabled man pages plugin for fish-shell",
+        "homepage": "",
+        "owner": "decors",
+        "repo": "fish-colored-man",
+        "rev": "c1e9db7765c932587b795d6c8965e9cff2fd849a",
+        "sha256": "16ar220pz8lmv58c8fj81mi7slk0qb20dh5zdwcyyw12dgzahsvr",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/6e3544b73afea08d1428b159b2a57dc9d1724493.tar.gz",
+        "url": "https://github.com/decors/fish-colored-man/archive/c1e9db7765c932587b795d6c8965e9cff2fd849a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fish-ssh-agent": {
+        "branch": "master",
+        "description": null,
+        "homepage": null,
+        "owner": "danhper",
+        "repo": "fish-ssh-agent",
+        "rev": "fd70a2afdd03caf9bf609746bf6b993b9e83be57",
+        "sha256": "1fvl23y9lylj4nz6k7yfja6v9jlsg8jffs2m5mq0ql4ja5vi5pkv",
+        "type": "tarball",
+        "url": "https://github.com/danhper/fish-ssh-agent/archive/fd70a2afdd03caf9bf609746bf6b993b9e83be57.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fzf": {
+        "branch": "master",
+        "description": "Ef-🐟-ient fish keybindings for fzf",
+        "homepage": "",
+        "owner": "jethrokuan",
+        "repo": "fzf",
+        "rev": "8ee7cf502637a9dd7d0cd96ead67c631a25e49d9",
+        "sha256": "0y8n8yiq2kyfngf703qs81vj5sp4khmqdavpvrwli57rs53jqv8g",
+        "type": "tarball",
+        "url": "https://github.com/jethrokuan/fzf/archive/8ee7cf502637a9dd7d0cd96ead67c631a25e49d9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +73,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "ba57d5a29b4e0f2085917010380ef3ddc3cf380f",
-        "sha256": "1kpsvc53x821cmjg1khvp1nz7906gczq8mp83664cr15h94sh8i4",
+        "rev": "94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098",
+        "sha256": "1y2h9wl7w60maa2m4xw9231xdr325xynzpph8xr4j5vsznygv986",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -43,8 +87,64 @@
         "repo": "nixpkgs",
         "rev": "2080afd039999a58d60596d04cefb32ef5fcc2a2",
         "sha256": "0i677swvj8fxfwg3jibd0xl33rn0rq0adnniim8jnp384whnh8ry",
+    "pisces": {
+        "branch": "master",
+        "description": "♓️ Fish shell plugin that helps you to work with paired symbols in the command line",
+        "homepage": "",
+        "owner": "laughedelic",
+        "repo": "pisces",
+        "rev": "e45e0869855d089ba1e628b6248434b2dfa709c4",
+        "sha256": "073wb83qcn0hfkywjcly64k6pf0d7z5nxxwls5sa80jdwchvd2rs",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/2080afd039999a58d60596d04cefb32ef5fcc2a2.tar.gz",
+        "url": "https://github.com/laughedelic/pisces/archive/e45e0869855d089ba1e628b6248434b2dfa709c4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "plugin-bang-bang": {
+        "branch": "master",
+        "description": "Bash style history substitution for Oh My Fish",
+        "homepage": null,
+        "owner": "oh-my-fish",
+        "repo": "plugin-bang-bang",
+        "rev": "d45ae216969fa5c3eac0b6248119e8a1da56fe89",
+        "sha256": "0jpcs8fpw9a69ai6mwhgikw77j03fhnixcl21yx1b5p65333pddc",
+        "type": "tarball",
+        "url": "https://github.com/oh-my-fish/plugin-bang-bang/archive/d45ae216969fa5c3eac0b6248119e8a1da56fe89.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "plugin-git": {
+        "branch": "master",
+        "description": "Git plugin for Oh My Fish  (similar to oh-my-zsh git)",
+        "homepage": "",
+        "owner": "jhillyerd",
+        "repo": "plugin-git",
+        "rev": "ac95cd71e961dbe6fc4c15d539a34c42247623f6",
+        "sha256": "0kv4avpgv3qfwynx458gcwqvsk1i6x0h9636wd0y8cxsgr146cxj",
+        "type": "tarball",
+        "url": "https://github.com/jhillyerd/plugin-git/archive/ac95cd71e961dbe6fc4c15d539a34c42247623f6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "theme-bobthefish": {
+        "branch": "master",
+        "description": "A Powerline-style, Git-aware fish theme optimized for awesome.",
+        "homepage": "",
+        "owner": "benjaminor",
+        "repo": "theme-bobthefish",
+        "rev": "6525d449e46d8a5f32f74690e93ba6feff703cdd",
+        "sha256": "0irz4d34cz8l69cv2maydjkbagwn2s1vff2j0imargh9i7s9a46r",
+        "type": "tarball",
+        "url": "https://github.com/benjaminor/theme-bobthefish/archive/6525d449e46d8a5f32f74690e93ba6feff703cdd.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "z": {
+        "branch": "master",
+        "description": "Pure-fish z directory jumping",
+        "homepage": "",
+        "owner": "jethrokuan",
+        "repo": "z",
+        "rev": "13a320bee8b815704772d94f5994745b11cd1e03",
+        "sha256": "0z7l7fgd9khcq1fi9ymjjrxj58pw5xdzg8k6mxqmqw1345hkpr4f",
+        "type": "tarball",
+        "url": "https://github.com/jethrokuan/z/archive/13a320bee8b815704772d94f5994745b11cd1e03.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

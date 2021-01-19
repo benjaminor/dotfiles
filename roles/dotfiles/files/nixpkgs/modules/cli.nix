@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-let helper = import ./helper.nix;
+let
+  helper = import ./helper.nix;
+  fishPlugins = import ./fishPlugins.nix;
 in (with helper; {
 
   imports = [ ./nix-utils.nix ];
@@ -84,6 +86,7 @@ in (with helper; {
 
     fish = {
       enable = true;
+      plugins = fishPlugins.plugins;
       shellInit = ''
          if not functions -q fisher
            set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
@@ -265,13 +268,7 @@ in (with helper; {
 
   xdg = {
     enable = true;
-    configFile = {
-      "fish/fishfile".source = (resolveConfigLocation "fish/fishfile");
-
-      "shell".source = (resolveConfigLocation "shell");
-
-      # "powerline-shell".source = (resolveConfigLocation "powerline-shell");
-    };
+    configFile = { "shell".source = (resolveConfigLocation "shell"); };
   };
 
 })
