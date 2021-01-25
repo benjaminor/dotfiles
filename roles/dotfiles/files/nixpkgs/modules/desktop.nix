@@ -10,7 +10,7 @@ in (with helper; {
 
     feh
     zathura
-    kdeApplications.okular
+    libsForQt5.okular
 
     redshift
     keepassxc # TODO: is this really desktop?
