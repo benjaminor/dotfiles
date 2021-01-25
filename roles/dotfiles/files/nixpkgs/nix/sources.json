@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "49259bf1c3335c0f891106aa2df6539d1cb96437",
-        "sha256": "1g9d0wbq1va1809qi9nyrngnqq5fsii3khfvnlz77pd8zajgd6ja",
+        "rev": "cd9550fda22ea8040b1703168715bdf4e889f9c3",
+        "sha256": "0178yl5kv75yl5grp58ncrfclkm9x45w8ic18c53mp40bb2nmhhg",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/49259bf1c3335c0f891106aa2df6539d1cb96437.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/cd9550fda22ea8040b1703168715bdf4e889f9c3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-colored-man": {
@@ -65,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8127799f79ee96129b295d78294f40a54078131f",
-        "sha256": "0iji8nxa66s409pvjwi370ycsw4m74w6b3ywnjpfkl2filpapjns",
+        "rev": "c137866bd7d2a9c2010b618252694f395453cf59",
+        "sha256": "1k21fwls9p22xf5qbdhd4jlkq487vlr1g3j90vv7mz4hkddsaz79",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/8127799f79ee96129b295d78294f40a54078131f.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/c137866bd7d2a9c2010b618252694f395453cf59.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -89,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2fbc36f3d891c86ae34dc0414bc78e74e8911218",
-        "sha256": "1ris5infk1x6vvk2wx7ijv6gy5ads75gfkwkmm9df955xckfqsg8",
+        "rev": "fcef64cc39816a38a0c617a7e49076fc1ab080cf",
+        "sha256": "0dgbd9b1y0nqchd1qfirnk382g79cg382869c60y74mcwwr4h6g7",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/2fbc36f3d891c86ae34dc0414bc78e74e8911218.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/fcef64cc39816a38a0c617a7e49076fc1ab080cf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "pisces": {
@@ -125,22 +125,22 @@
         "homepage": "",
         "owner": "jhillyerd",
         "repo": "plugin-git",
-        "rev": "ac95cd71e961dbe6fc4c15d539a34c42247623f6",
-        "sha256": "0kv4avpgv3qfwynx458gcwqvsk1i6x0h9636wd0y8cxsgr146cxj",
+        "rev": "626aa5fa7694d24f5aa9160f74b82f243c149697",
+        "sha256": "18wbdv1l4j6kgx0rhsvmffsfd918yxlfyx4jbmi00018d83wn3yb",
         "type": "tarball",
-        "url": "https://github.com/jhillyerd/plugin-git/archive/ac95cd71e961dbe6fc4c15d539a34c42247623f6.tar.gz",
+        "url": "https://github.com/jhillyerd/plugin-git/archive/626aa5fa7694d24f5aa9160f74b82f243c149697.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "theme-bobthefish": {
         "branch": "master",
         "description": "A Powerline-style, Git-aware fish theme optimized for awesome.",
         "homepage": "",
-        "owner": "benjaminor",
+        "owner": "oh-my-fish",
         "repo": "theme-bobthefish",
-        "rev": "6525d449e46d8a5f32f74690e93ba6feff703cdd",
+        "rev": "954fbc961b779c29ad24749f9a09095d049fb752",
         "sha256": "0irz4d34cz8l69cv2maydjkbagwn2s1vff2j0imargh9i7s9a46r",
         "type": "tarball",
-        "url": "https://github.com/benjaminor/theme-bobthefish/archive/6525d449e46d8a5f32f74690e93ba6feff703cdd.tar.gz",
+        "url": "https://github.com/oh-my-fish/theme-bobthefish/archive/954fbc961b779c29ad24749f9a09095d049fb752.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "z": {
@@ -149,10 +149,10 @@
         "homepage": "",
         "owner": "jethrokuan",
         "repo": "z",
-        "rev": "13a320bee8b815704772d94f5994745b11cd1e03",
-        "sha256": "0z7l7fgd9khcq1fi9ymjjrxj58pw5xdzg8k6mxqmqw1345hkpr4f",
+        "rev": "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb",
+        "sha256": "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc",
         "type": "tarball",
-        "url": "https://github.com/jethrokuan/z/archive/13a320bee8b815704772d94f5994745b11cd1e03.tar.gz",
+        "url": "https://github.com/jethrokuan/z/archive/e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
