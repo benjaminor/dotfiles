@@ -5,18 +5,13 @@ general {
 		markup = pango
 }
 
-# order += "ipv6"
 order += "load"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "disk /home"
 order += "disk /home/ben/shared"
-# order += "run_watch DHCP"
-# order += "run_watch VPNC"
-order += "path_exists VPN"
-order += "wireless wlp5s0"
-order += "ethernet enp3s0"
+order += "networkmanager"
 order += "battery 0"
 order += "tztime local"
 order += "spotify"
@@ -31,20 +26,19 @@ cpu_usage {
 }
 
 disk "/" {
-		format = "<span background='#224400'> %free Free </span>"
+		format = "<span background='#224400'> %free</span>"
 }
 
 disk "/home" {
-		format = "<span background='#0000ff'> %free Free </span>"
+		format = "<span background='#0000ff'> %free</span>"
 }
 
 disk "/home/ben/shared" {
 
-	 format = "<span background='#bb0000'> %free Free </span>"
+	 format = "<span background='#bb0000'> %free</span>"
 }
 
 wireless wlp5s0 {
-		format_up = "W: (%quality at %essid, %bitrate) %ip"
 		format_down = "W: down"
 }
 

@@ -273,6 +273,7 @@ exec --no-startup-id nm-applet
 for_window [title=".*\(Private Browsing\).*"] move to workspace "private"
 for_window [class=".*(?i)Spotify.*"] move to workspace "spotify"
 for_window [class="nextcloud"] move scratchpad
+for_window [class="xconsole"] move scratchpad
 for_window [class=".*(?i)signal.*"] move to workspace "signal"
 for_window [class=".*(?i)anki.*"] move to workspace "anki"
 
