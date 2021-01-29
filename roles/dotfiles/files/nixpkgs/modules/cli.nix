@@ -220,42 +220,20 @@ in (with helper; {
 
   };
 
-  #   services.polybar = {
-  #     enable = false;
-  #     config = {
-  #       "bar/bar" = {
-  #         monitor = "\${env:MONITOR:}";
-  #         width = "100%";
-  #         height = "3%";
-  #         radius = 0;
-  #         modules-center = "date";
-  #       };
+  services = {
+    gpg-agent = {
+      enable = true;
+      defaultCacheTtl = 1800;
+      maxCacheTtl = 999999;
+      enableSshSupport = true;
+    };
+    lorri.enable = true;
+  };
 
-  #       "module/date" = {
-  #         type = "internal/date";
-  #         internal = 5;
-  #         date = "%d.%m.%y";
-  #         time = "%H:%M";
-  #         label = "%time%  %date%";
-  #       };
-
-  #     };
-  #     script =  ''
-  # # for m in $(polybar --list-monitors | cut -d":" -f1); do
-  # #     MONITOR=$m polybar --reload example &
-  # # done
-  # # '';
-  #   };
-
-  #   services.lorri.enable = true;
-
-  #   systemd.user.startServices = true;
-  # use i3 as wm
-  # xsession.enable = true;
-  # xsession.windowManager.i3.enable = true;
-  # services.screen-locker.lockCmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -p -t ''";
-
-  # services.nextcloud-client.enable = true;
+  systemd.user = {
+    startServices = "sd-switch";
+    systemctlPath = "/usr/bin/systemctl";
+  };
 
   home.file = {
 

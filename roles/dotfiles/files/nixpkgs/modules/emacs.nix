@@ -17,7 +17,7 @@ in (with helper; {
       enable = true;
       package = pkgs.emacsWithPackagesFromUsePackage {
         alwaysEnsure = true;
-        config = (resolveConfigLocation "emacs/init.el");
+        config = (resolveConfigLocation "emacs/config.org");
         package = pkgs.emacsGcc;
       };
     };

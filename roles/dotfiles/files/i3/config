@@ -252,7 +252,6 @@ bindsym $mod+p mode "$mode_system"
 
 # background and light
 exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/Firefox_wallpaper.png
-exec --no-startup-id redshift -l 48.18:11.59 -t 6000:2000
 
 assign [class="qpdfview"] $ws1
 assign [class="Emacs"] $ws3
@@ -283,5 +282,3 @@ bindsym $mod+F1 workspace "anki"
 bindsym $mod+F2 workspace "signal"
 bindsym $mod+F3 workspace "spotify"
 bindsym $mod+F4 workspace "private"
-
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
