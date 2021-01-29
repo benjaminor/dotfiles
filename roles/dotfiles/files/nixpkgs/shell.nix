@@ -5,7 +5,7 @@ let
   home-manager = import sources.home-manager { inherit pkgs; };
 in pkgs.mkShell {
 
-  buildInputs = with pkgs; [ niv home-manager.home-manager ];
+  buildInputs = with pkgs; [ niv home-manager.home-manager cachix ];
 
   shellHook = ''
     export NIX_PATH="nixpkgs=${nixpkgs}:home-manager=${sources."home-manager"}"
