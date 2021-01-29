@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "ab31d0cf104d4d642a960c7f218b49d59c69870a",
-        "sha256": "04gcg870r5p43a495in38z29xpngby624ackdzv5027jbn90f14g",
+        "rev": "33a0ceab645eef9276459a9ddb63fcc9393ab7d3",
+        "sha256": "0nxz0x1hr0v3v1l7jyzw2yprgbz5kj0x3bhc0wpsi5y27afkrx67",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/ab31d0cf104d4d642a960c7f218b49d59c69870a.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/33a0ceab645eef9276459a9ddb63fcc9393ab7d3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-colored-man": {
@@ -65,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "db88b625f9230154878db56e934e940d84f153bc",
-        "sha256": "099h3sqfmngf08n8sfdzh4jhcidqkrcy7nvq8hr4vpz5asfahhhz",
+        "rev": "7313258b45f2da898e3f23fed8a42e1b6ef19e9d",
+        "sha256": "0l62kb21g1k348bs57zqf7yhd1hvg6fdvgkhdj71vhcijfq4lhs6",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/db88b625f9230154878db56e934e940d84f153bc.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/7313258b45f2da898e3f23fed8a42e1b6ef19e9d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
