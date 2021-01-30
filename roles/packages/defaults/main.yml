@@ -12,9 +12,6 @@ suse_repos:
 common_packages:
   - git
   - thunderbird
-  - i3
-  - i3status
-  - py3status
   - gcc
   - make
   - nextcloud-desktop

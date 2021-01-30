@@ -4,11 +4,5 @@
     - role: packages
       tags: ["packages", "software"]
       become: true
-    - role: python
-      tags: ["python", "software"]
-    - role: nix
-      tags: ["nix", "software"]
-    - role: home-manager
-      tags: ["nix", "software"]
     - role: dotfiles
       tags: ["dotfiles"]
