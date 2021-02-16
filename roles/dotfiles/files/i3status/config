@@ -26,16 +26,16 @@ cpu_usage {
 }
 
 disk "/" {
-		format = "<span background='#224400'> %free</span>"
+		format = "<span background='#224400'> %free </span>"
 }
 
 disk "/home" {
-		format = "<span background='#0000ff'> %free</span>"
+		format = "<span background='#0000ff'> %free </span>"
 }
 
 disk "/home/ben/shared" {
 
-	 format = "<span background='#bb0000'> %free</span>"
+	 format = "<span background='#bb0000'> %free </span>"
 }
 
 wireless wlp5s0 {

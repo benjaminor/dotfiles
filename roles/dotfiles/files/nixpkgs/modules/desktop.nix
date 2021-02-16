@@ -18,6 +18,7 @@ in (with helper; {
     spotify
 
     i3status
+    python39Packages.py3status
     polybarFull
     playerctl
 
