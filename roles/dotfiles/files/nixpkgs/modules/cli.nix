@@ -19,6 +19,7 @@ in (with helper; {
     rsync
     tree
     pdftk
+    mdcat
 
     # command line tools
     ripgrep

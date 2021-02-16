@@ -9,6 +9,9 @@ alias lg='exa -aalmg@hH --git'
 alias ll='exa -aalmg@hH'
 alias lls='ll --sort=size'
 
+alias b='bat'
+alias m='mdcat -p'
+
 alias emacs='emacs --no-splash'
 alias vi='nvim'
 alias vim='nvim'
