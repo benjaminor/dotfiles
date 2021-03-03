@@ -31,6 +31,9 @@ in (with helper; {
     iptables
     du-dust
 
+    # for bash
+    python38Packages.powerline
+
     mpv
     silver-searcher
     pinentry

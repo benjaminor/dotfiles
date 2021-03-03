@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  home.packages = (with pkgs; [ niv nix-index lorri ]);
+  home.packages = (with pkgs; [ niv nix-index lorri nixpkgs-fmt ]);
 }
