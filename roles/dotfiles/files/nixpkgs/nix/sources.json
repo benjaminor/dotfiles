@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "edc",
         "repo": "bass",
-        "rev": "df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b",
-        "sha256": "1dgydrza6lvx3dl9spkla1g728x5rr76mqrwk2afrl732439y6jl",
+        "rev": "2fd3d2157d5271ca3575b13daec975ca4c10577a",
+        "sha256": "0mb01y1d0g8ilsr5m8a71j6xmqlyhf8w4xjf00wkk8k41cz3ypky",
         "type": "tarball",
-        "url": "https://github.com/edc/bass/archive/df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b.tar.gz",
+        "url": "https://github.com/edc/bass/archive/2fd3d2157d5271ca3575b13daec975ca4c10577a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "33a0ceab645eef9276459a9ddb63fcc9393ab7d3",
-        "sha256": "0nxz0x1hr0v3v1l7jyzw2yprgbz5kj0x3bhc0wpsi5y27afkrx67",
+        "rev": "a46431e3043fe0b5e2374e71d247802d9a9e740e",
+        "sha256": "1r70knx6d1b15gajw2rcgxkfd397cpwha7jp18zdzzr2wq92kd5d",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/33a0ceab645eef9276459a9ddb63fcc9393ab7d3.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/a46431e3043fe0b5e2374e71d247802d9a9e740e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-colored-man": {
@@ -65,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7313258b45f2da898e3f23fed8a42e1b6ef19e9d",
-        "sha256": "0l62kb21g1k348bs57zqf7yhd1hvg6fdvgkhdj71vhcijfq4lhs6",
+        "rev": "e72e241d7a602559285205820cfd708282a4197a",
+        "sha256": "05za9s44qlwpbyvm5z600wy85nk328vxg4cj68vc6nzsz91n5m9d",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/7313258b45f2da898e3f23fed8a42e1b6ef19e9d.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/e72e241d7a602559285205820cfd708282a4197a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -77,22 +77,22 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "3cd7914b2c4cff48927e11c216dadfab7d903fe5",
-        "sha256": "1agq4nvbhrylf2s77kb4xhh9k7xcwdwggq764k4jgsbs70py8cw3",
+        "rev": "af958e8057f345ee1aca714c1247ef3ba1c15f5e",
+        "sha256": "1qjavxabbrsh73yck5dcq8jggvh3r2jkbr6b5nlz5d9yrqm9255n",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/3cd7914b2c4cff48927e11c216dadfab7d903fe5.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/af958e8057f345ee1aca714c1247ef3ba1c15f5e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "nixpkgs-unstable",
+        "branch": "nixos-unstable",
         "description": "Nix Packages collection",
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e5ce05cc1eee0b8d890726e9826791ef95c51793",
-        "sha256": "0gphycfms52zc2q12qn1737133kl6xacxc4f4ypvs7sv8v8br68w",
+        "rev": "0aeba64fb26e4defa0842a942757144659c6e29f",
+        "sha256": "08qd78dm29xmawc32m83mvhjp4j9k3bj4pjgms2yj8185b82574i",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/e5ce05cc1eee0b8d890726e9826791ef95c51793.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/0aeba64fb26e4defa0842a942757144659c6e29f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "pisces": {
