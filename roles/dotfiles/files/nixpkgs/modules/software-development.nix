@@ -23,5 +23,13 @@
 
     # for website development
     hugo
+
+    # python
+    python39Packages.bandit
+    python39Packages.flake8
+    python39Packages.pytest
+    python39Packages.pytest-flake8
+    nodePackages.pyright
+    black
   ]);
 }
