@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
-
 let helper = import ./helper.nix;
-in (with helper; {
+in
+(with helper; {
   imports = [ ./fonts.nix ];
   home.packages = (with pkgs; [
     # aspell and its dictionaries
@@ -16,8 +16,9 @@ in (with helper; {
     emacs = {
       enable = true;
       package = pkgs.emacsWithPackagesFromUsePackage {
+        config = /. + (builtins.unsafeDiscardStringContext
+          (resolveConfigLocation "emacs/config.org"));
         alwaysEnsure = true;
-        config = (resolveConfigLocation "emacs/config.org");
         package = pkgs.emacsGcc;
       };
     };
